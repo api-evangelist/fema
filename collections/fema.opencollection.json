@@ -1,0 +1,170 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OpenFEMA API",
+    "version": "2.1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Disaster Declarations Summaries",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": { "name": "List disaster declarations summaries.", "type": "http" },
+          "http": {
+            "method": "GET",
+            "url": "https://www.fema.gov/api/open/v2/DisasterDeclarationsSummaries",
+            "params": [
+              { "name": "$top", "value": "1000", "type": "query", "description": "Number of records to return (default 1000, max 10000)." },
+              { "name": "$filter", "value": "state eq 'FL'", "type": "query", "description": "OData filter expression." }
+            ]
+          },
+          "docs": "Returns summarized records for every official FEMA disaster declaration since 1953."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Public Assistance",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": { "name": "List Public Assistance funded projects details.", "type": "http" },
+          "http": {
+            "method": "GET",
+            "url": "https://www.fema.gov/api/open/v1/PublicAssistanceFundedProjectsDetails",
+            "params": [
+              { "name": "$top", "value": "1000", "type": "query", "description": "Number of records to return (default 1000, max 10000)." },
+              { "name": "$filter", "value": "disasterNumber eq 4611", "type": "query", "description": "OData filter expression." }
+            ]
+          },
+          "docs": "Returns obligated Public Assistance grant projects (project worksheets), joinable to Public Assistance Applicants via applicantId."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Hazard Mitigation",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": { "name": "List Hazard Mitigation Assistance projects.", "type": "http" },
+          "http": {
+            "method": "GET",
+            "url": "https://www.fema.gov/api/open/v3/HazardMitigationAssistanceProjects",
+            "params": [
+              { "name": "$top", "value": "1000", "type": "query", "description": "Number of records to return (default 1000, max 10000)." },
+              { "name": "$filter", "value": "state eq 'CA'", "type": "query", "description": "OData filter expression." }
+            ]
+          },
+          "docs": "Returns funded projects under the HMGP, FMA, and (historically) PDM hazard mitigation grant programs."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "NFIP",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": { "name": "List NFIP redacted policies.", "type": "http" },
+          "http": {
+            "method": "GET",
+            "url": "https://www.fema.gov/api/open/v2/FimaNfipPolicies",
+            "params": [
+              { "name": "$top", "value": "1000", "type": "query", "description": "Number of records to return (default 1000, max 10000)." },
+              { "name": "$filter", "value": "propertyState eq 'LA'", "type": "query", "description": "OData filter expression." }
+            ]
+          },
+          "docs": "Returns policy-level NFIP transactions redacted to protect policyholder personally identifiable information."
+        },
+        {
+          "info": { "name": "List NFIP redacted claims.", "type": "http" },
+          "http": {
+            "method": "GET",
+            "url": "https://www.fema.gov/api/open/v2/FimaNfipClaims",
+            "params": [
+              { "name": "$top", "value": "1000", "type": "query", "description": "Number of records to return (default 1000, max 10000)." },
+              { "name": "$filter", "value": "yearOfLoss eq 2024", "type": "query", "description": "OData filter expression." }
+            ]
+          },
+          "docs": "Returns NFIP claims transactions redacted to protect policyholder personally identifiable information."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "IPAWS",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": { "name": "List IPAWS archived alerts.", "type": "http" },
+          "http": {
+            "method": "GET",
+            "url": "https://www.fema.gov/api/open/v1/IpawsArchivedAlerts",
+            "params": [
+              { "name": "$top", "value": "100", "type": "query", "description": "Number of records to return (default 1000, max 10000)." },
+              { "name": "$orderby", "value": "sent desc", "type": "query", "description": "Field to sort by." }
+            ]
+          },
+          "docs": "Returns archived Common Alerting Protocol (CAP) messages issued through IPAWS. Hierarchical/nested payload, unique among OpenFEMA datasets."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Web Disaster Summaries",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": { "name": "List FEMA web disaster summaries.", "type": "http" },
+          "http": {
+            "method": "GET",
+            "url": "https://www.fema.gov/api/open/v1/FemaWebDisasterSummaries",
+            "params": [
+              { "name": "$top", "value": "1000", "type": "query", "description": "Number of records to return (default 1000, max 10000)." }
+            ]
+          },
+          "docs": "Returns per-disaster financial summary totals (Individual Assistance, Public Assistance, Hazard Mitigation) sourced raw from NEMIS."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Catalog",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": { "name": "List the OpenFEMA dataset catalog.", "type": "http" },
+          "http": {
+            "method": "GET",
+            "url": "https://www.fema.gov/api/open/v1/OpenFemaDataSets",
+            "params": [
+              { "name": "$top", "value": "1000", "type": "query", "description": "Number of records to return (default 1000, max 10000)." }
+            ]
+          },
+          "docs": "Returns metadata describing every dataset and version published on OpenFEMA, including whether an API endpoint exists for it."
+        },
+        {
+          "info": { "name": "List the data dictionary for a dataset/version.", "type": "http" },
+          "http": {
+            "method": "GET",
+            "url": "https://www.fema.gov/api/open/v1/OpenFemaDataSetFields",
+            "params": [
+              { "name": "$filter", "value": "openFemaDataSet eq 'DisasterDeclarationsSummaries' and datasetVersion eq 2", "type": "query", "description": "OData filter expression scoping to a dataset name and version." }
+            ]
+          },
+          "docs": "Returns the field-level data dictionary (name, title, type, description) for a given dataset name and version."
+        }
+      ]
+    }
+  ]
+}

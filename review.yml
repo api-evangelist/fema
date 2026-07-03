@@ -1,0 +1,113 @@
+aid: fema
+name: OpenFEMA
+review:
+  question: Does OpenFEMA expose a documented public WebSocket API?
+  answer: false
+  date: '2026-07-03'
+  reviewer: API Evangelist
+  asyncapiSpecCreated: false
+  asyncapiScopeNote: |
+    No AsyncAPI document was authored. OpenFEMA's entire public surface is
+    request/response REST over HTTPS using OData-style query parameters
+    against versioned dataset endpoints - there is no server-push transport
+    (WebSocket or SSE) anywhere on the platform to model. IPAWS Archived
+    Alerts is a polled historical archive of past alerts, not a live push
+    feed of new alerts as they are issued.
+findings:
+  summary: |
+    OpenFEMA does not publish a documented public WebSocket API. It is a
+    read-only, free, unauthenticated RESTful API (base
+    https://www.fema.gov/api/open) exposing individually versioned dataset
+    endpoints - Disaster Declarations Summaries, Public Assistance Funded
+    Projects Details, Hazard Mitigation Assistance Projects, FIMA NFIP
+    Redacted Policies/Claims, IPAWS Archived Alerts, FEMA Web Disaster
+    Summaries, and the self-describing OpenFemaDataSets/OpenFemaDataSetFields
+    catalog. All are queried with OData-style parameters ($filter, $select,
+    $top, $skip, $orderby, $format, $metadata, $count, $allrecords) and
+    return JSON by default (CSV and Parquet also supported). No realtime,
+    bidirectional, or streaming WebSocket (ws:// or wss://) endpoint is
+    documented for any dataset, including IPAWS Archived Alerts, which is a
+    historical archive queried like any other dataset rather than a live
+    alert push feed.
+  noAuthNoPricing: |
+    OpenFEMA requires no API key, account, or subscription, and publishes no
+    pricing or plan tiers - it is free U.S. federal open data under the
+    Freedom of Information Act / Open Government Data mandate. This is why
+    this repository has no plans/ or finops/ directory: there is nothing to
+    document beyond the absence of cost or authentication, which is stated
+    directly in apis.yml and README.md instead of being fabricated.
+  transports:
+    - protocol: REST
+      scheme: https
+      baseURL: https://www.fema.gov/api/open
+      documented: true
+      note: OData-style query parameters over versioned dataset endpoints (e.g. /v2/DisasterDeclarationsSummaries).
+    - protocol: Bulk Download
+      scheme: https
+      documented: true
+      note: $allrecords=true (BETA) and $format=csv/parquet for full-dataset export outside the 10000-record per-call ceiling.
+    - protocol: WebSocket
+      scheme: wss
+      documented: false
+      note: No WebSocket endpoint is documented anywhere in the OpenFEMA API reference, developer resources, or individual dataset pages as of the review date.
+  endpointsConfirmed:
+    - GET https://www.fema.gov/api/open/v2/DisasterDeclarationsSummaries
+    - GET https://www.fema.gov/api/open/v1/PublicAssistanceFundedProjectsDetails
+    - GET https://www.fema.gov/api/open/v3/HazardMitigationAssistanceProjects
+    - GET https://www.fema.gov/api/open/v2/FimaNfipPolicies
+    - GET https://www.fema.gov/api/open/v2/FimaNfipClaims
+    - GET https://www.fema.gov/api/open/v1/IpawsArchivedAlerts
+    - GET https://www.fema.gov/api/open/v1/FemaWebDisasterSummaries
+    - GET https://www.fema.gov/api/open/v1/OpenFemaDataSets
+    - GET https://www.fema.gov/api/open/v1/OpenFemaDataSetFields
+  endpointsModeled:
+    - note: |
+        Full field-level schemas (81 fields for FimaNfipPolicies, 73 for
+        FimaNfipClaims, and similarly wide field lists for the Public
+        Assistance and Hazard Mitigation datasets) are not exhaustively
+        reproduced in openapi/fema-openapi.yml. Representative fields
+        confirmed via FEMA documentation and third-party summaries are
+        modeled; the authoritative, complete field list for any
+        dataset/version is always available live from the
+        OpenFemaDataSetFields metadata endpoint itself.
+sources:
+  - url: https://www.fema.gov/about/openfema/api
+    type: Documentation
+    note: Core API documentation - base path, OData query parameters, no-auth statement.
+  - url: https://www.fema.gov/about/openfema/data-sets
+    type: APIReference
+    note: Master list of all published datasets with links to individual dataset pages and endpoints.
+  - url: https://www.fema.gov/about/openfema/developer-resources
+    type: Documentation
+    note: Developer-facing resources and links to code samples.
+  - url: https://www.fema.gov/about/openfema/working-with-large-data-sets
+    type: Documentation
+    note: Describes the 1000/10000 record-per-call limits, $skip paging, and $allrecords beta.
+  - url: https://www.fema.gov/openfema-data-page/disaster-declarations-summaries-v2
+    type: APIReference
+    note: Disaster Declarations Summaries v2 dataset page and endpoint.
+  - url: https://www.fema.gov/openfema-data-page/public-assistance-funded-projects-details-v1
+    type: APIReference
+    note: Public Assistance Funded Projects Details v1 dataset page and endpoint.
+  - url: https://www.fema.gov/openfema-data-page/fima-nfip-redacted-policies-v2
+    type: APIReference
+    note: FIMA NFIP Redacted Policies v2 dataset page and endpoint.
+  - url: https://www.fema.gov/openfema-data-page/fima-nfip-redacted-claims-v2
+    type: APIReference
+    note: FIMA NFIP Redacted Claims v2 dataset page and endpoint.
+  - url: https://www.fema.gov/openfema-data-page/ipaws-archived-alerts-v1
+    type: APIReference
+    note: IPAWS Archived Alerts v1 dataset page; notes the hierarchical/nested payload shape. All REST, no push transport.
+  - url: https://www.fema.gov/openfema-data-page/fema-web-disaster-summaries-v1
+    type: APIReference
+    note: FEMA Web Disaster Summaries v1 dataset page and endpoint.
+  - url: https://github.com/FEMA/openfema-samples
+    type: SourceCode
+    note: Official FEMA code/dataset samples repository for the API.
+actions:
+  asyncapiPath: null
+  apisYmlUpdated: true
+  reason: |
+    No WebSocket or other server-push protocol surface exists anywhere on
+    OpenFEMA. The entire platform is request/response REST (plus flat-file
+    bulk download), so no AsyncAPI document was created.

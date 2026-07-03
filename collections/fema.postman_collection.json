@@ -1,0 +1,197 @@
+{
+  "info": {
+    "name": "OpenFEMA API",
+    "description": "FEMA's open data platform - read-only, unauthenticated RESTful access to disaster declarations, public assistance, hazard mitigation, NFIP, IPAWS alerts, web disaster summaries, and the self-describing dataset catalog. Base URL: https://www.fema.gov/api/open (dataset version is part of each path). Uses OData-style query parameters ($filter, $select, $top, $skip, $orderby, $format, $metadata, $count, $allrecords). No API key required.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "https://www.fema.gov/api/open", "type": "string" }
+  ],
+  "item": [
+    {
+      "name": "Disaster Declarations Summaries",
+      "item": [
+        {
+          "name": "List disaster declarations summaries",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/v2/DisasterDeclarationsSummaries?$top=1000&$filter=state eq 'FL'",
+              "host": ["{{baseUrl}}"],
+              "path": ["v2", "DisasterDeclarationsSummaries"],
+              "query": [
+                { "key": "$top", "value": "1000" },
+                { "key": "$filter", "value": "state eq 'FL'" }
+              ]
+            },
+            "description": "Returns summarized records for every official FEMA disaster declaration since 1953."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Public Assistance",
+      "item": [
+        {
+          "name": "List Public Assistance funded projects details",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/v1/PublicAssistanceFundedProjectsDetails?$top=1000&$filter=disasterNumber eq 4611",
+              "host": ["{{baseUrl}}"],
+              "path": ["v1", "PublicAssistanceFundedProjectsDetails"],
+              "query": [
+                { "key": "$top", "value": "1000" },
+                { "key": "$filter", "value": "disasterNumber eq 4611" }
+              ]
+            },
+            "description": "Returns obligated Public Assistance grant projects (project worksheets)."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Hazard Mitigation",
+      "item": [
+        {
+          "name": "List Hazard Mitigation Assistance projects",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/v3/HazardMitigationAssistanceProjects?$top=1000&$filter=state eq 'CA'",
+              "host": ["{{baseUrl}}"],
+              "path": ["v3", "HazardMitigationAssistanceProjects"],
+              "query": [
+                { "key": "$top", "value": "1000" },
+                { "key": "$filter", "value": "state eq 'CA'" }
+              ]
+            },
+            "description": "Returns funded projects under the HMGP, FMA, and (historically) PDM hazard mitigation grant programs."
+          }
+        }
+      ]
+    },
+    {
+      "name": "NFIP",
+      "item": [
+        {
+          "name": "List NFIP redacted policies",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/v2/FimaNfipPolicies?$top=1000&$filter=propertyState eq 'LA'",
+              "host": ["{{baseUrl}}"],
+              "path": ["v2", "FimaNfipPolicies"],
+              "query": [
+                { "key": "$top", "value": "1000" },
+                { "key": "$filter", "value": "propertyState eq 'LA'" }
+              ]
+            },
+            "description": "Returns policy-level NFIP transactions redacted to protect policyholder PII."
+          }
+        },
+        {
+          "name": "List NFIP redacted claims",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/v2/FimaNfipClaims?$top=1000&$filter=yearOfLoss eq 2024",
+              "host": ["{{baseUrl}}"],
+              "path": ["v2", "FimaNfipClaims"],
+              "query": [
+                { "key": "$top", "value": "1000" },
+                { "key": "$filter", "value": "yearOfLoss eq 2024" }
+              ]
+            },
+            "description": "Returns NFIP claims transactions redacted to protect policyholder PII."
+          }
+        }
+      ]
+    },
+    {
+      "name": "IPAWS",
+      "item": [
+        {
+          "name": "List IPAWS archived alerts",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/v1/IpawsArchivedAlerts?$top=100&$orderby=sent desc",
+              "host": ["{{baseUrl}}"],
+              "path": ["v1", "IpawsArchivedAlerts"],
+              "query": [
+                { "key": "$top", "value": "100" },
+                { "key": "$orderby", "value": "sent desc" }
+              ]
+            },
+            "description": "Returns archived Common Alerting Protocol (CAP) messages issued through IPAWS. Hierarchical/nested payload."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Web Disaster Summaries",
+      "item": [
+        {
+          "name": "List FEMA web disaster summaries",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/v1/FemaWebDisasterSummaries?$top=1000",
+              "host": ["{{baseUrl}}"],
+              "path": ["v1", "FemaWebDisasterSummaries"],
+              "query": [
+                { "key": "$top", "value": "1000" }
+              ]
+            },
+            "description": "Returns per-disaster financial summary totals sourced raw from NEMIS."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Catalog",
+      "item": [
+        {
+          "name": "List the OpenFEMA dataset catalog",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/v1/OpenFemaDataSets?$top=1000",
+              "host": ["{{baseUrl}}"],
+              "path": ["v1", "OpenFemaDataSets"],
+              "query": [
+                { "key": "$top", "value": "1000" }
+              ]
+            },
+            "description": "Returns metadata describing every dataset and version published on OpenFEMA."
+          }
+        },
+        {
+          "name": "List the data dictionary for a dataset/version",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/v1/OpenFemaDataSetFields?$filter=openFemaDataSet eq 'DisasterDeclarationsSummaries' and datasetVersion eq 2",
+              "host": ["{{baseUrl}}"],
+              "path": ["v1", "OpenFemaDataSetFields"],
+              "query": [
+                { "key": "$filter", "value": "openFemaDataSet eq 'DisasterDeclarationsSummaries' and datasetVersion eq 2" }
+              ]
+            },
+            "description": "Returns the field-level data dictionary for a given dataset name and version."
+          }
+        }
+      ]
+    }
+  ]
+}

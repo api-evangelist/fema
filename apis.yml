@@ -1,0 +1,192 @@
+aid: fema
+url: https://raw.githubusercontent.com/api-evangelist/fema/refs/heads/main/apis.yml
+name: OpenFEMA
+kind: government
+description: OpenFEMA is FEMA's open data platform, publishing free, public,
+  machine-readable datasets on disaster declarations, public assistance grants,
+  hazard mitigation projects, the National Flood Insurance Program (NFIP), and
+  emergency alerting through a read-only RESTful API. The API uses OData-style
+  query string parameters ($filter, $select, $top, $skip, $orderby) over
+  individually versioned dataset endpoints, requires no API key or
+  subscription, and returns JSON, CSV, or Parquet.
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+tags:
+- Government
+- Open Data
+- Emergency Management
+- Disaster
+- FEMA
+- Public Safety
+created: '2026-07-03'
+modified: '2026-07-03'
+specificationVersion: '0.19'
+apis:
+- aid: fema:fema-disaster-declarations-summaries-api
+  name: FEMA Disaster Declarations Summaries API
+  tags:
+  - Disasters
+  - Declarations
+  - Emergency Management
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://www.fema.gov/openfema-data-page/disaster-declarations-summaries-v2
+  baseURL: https://www.fema.gov/api/open/v2
+  properties:
+  - url: https://www.fema.gov/about/openfema/api
+    type: Documentation
+  - url: https://www.fema.gov/openfema-data-page/disaster-declarations-summaries-v2
+    type: APIReference
+  - url: openapi/fema-openapi.yml
+    type: OpenAPI
+  description: Summarized dataset of every official FEMA disaster declaration
+    since 1953 - major disaster, emergency, and fire management assistance
+    declarations - by state, county (FIPS), incident type, and declaration
+    date.
+- aid: fema:fema-public-assistance-funded-projects-details-api
+  name: FEMA Public Assistance Funded Projects Details API
+  tags:
+  - Public Assistance
+  - Grants
+  - Recovery
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://www.fema.gov/openfema-data-page/public-assistance-funded-projects-details-v1
+  baseURL: https://www.fema.gov/api/open/v1
+  properties:
+  - url: https://www.fema.gov/about/openfema/api
+    type: Documentation
+  - url: https://www.fema.gov/openfema-data-page/public-assistance-funded-projects-details-v1
+    type: APIReference
+  - url: openapi/fema-openapi.yml
+    type: OpenAPI
+  description: Obligated Public Assistance grant projects (project worksheets)
+    funded under the PA program, including damage category, project amount,
+    and federal share obligated. Joins to the Public Assistance Applicants
+    dataset via applicantId.
+- aid: fema:fema-hazard-mitigation-assistance-projects-api
+  name: FEMA Hazard Mitigation Assistance Projects API
+  tags:
+  - Hazard Mitigation
+  - Grants
+  - Resilience
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://www.fema.gov/about/openfema/data-sets
+  baseURL: https://www.fema.gov/api/open/v3
+  properties:
+  - url: https://www.fema.gov/about/openfema/api
+    type: Documentation
+  - url: https://www.fema.gov/about/openfema/data-sets
+    type: APIReference
+  - url: openapi/fema-openapi.yml
+    type: OpenAPI
+  description: Funded projects under FEMA's Hazard Mitigation Assistance
+    programs - Hazard Mitigation Grant Program (HMGP), Flood Mitigation
+    Assistance (FMA), and (historically) Pre-Disaster Mitigation (PDM) -
+    including project type, status, and federal cost share obligated.
+- aid: fema:fema-nfip-redacted-policies-api
+  name: FEMA NFIP Redacted Policies API
+  tags:
+  - NFIP
+  - Flood Insurance
+  - Policies
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://www.fema.gov/openfema-data-page/fima-nfip-redacted-policies-v2
+  baseURL: https://www.fema.gov/api/open/v2
+  properties:
+  - url: https://www.fema.gov/about/openfema/api
+    type: Documentation
+  - url: https://www.fema.gov/openfema-data-page/fima-nfip-redacted-policies-v2
+    type: APIReference
+  - url: openapi/fema-openapi.yml
+    type: OpenAPI
+  description: Policy-level transactions from the National Flood Insurance
+    Program (NFIP) system of record, redacted to protect policyholder
+    personally identifiable information - coverage amounts, premium,
+    construction, and flood zone attributes by community.
+- aid: fema:fema-nfip-redacted-claims-api
+  name: FEMA NFIP Redacted Claims API
+  tags:
+  - NFIP
+  - Flood Insurance
+  - Claims
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://www.fema.gov/openfema-data-page/fima-nfip-redacted-claims-v2
+  baseURL: https://www.fema.gov/api/open/v2
+  properties:
+  - url: https://www.fema.gov/about/openfema/api
+    type: Documentation
+  - url: https://www.fema.gov/openfema-data-page/fima-nfip-redacted-claims-v2
+    type: APIReference
+  - url: openapi/fema-openapi.yml
+    type: OpenAPI
+  description: NFIP claims transactions redacted to protect policyholder PII -
+    date of loss, cause of damage, building/contents payouts, and elevation
+    data by community.
+- aid: fema:fema-ipaws-archived-alerts-api
+  name: FEMA IPAWS Archived Alerts API
+  tags:
+  - IPAWS
+  - Alerts
+  - CAP
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://www.fema.gov/openfema-data-page/ipaws-archived-alerts-v1
+  baseURL: https://www.fema.gov/api/open/v1
+  properties:
+  - url: https://www.fema.gov/about/openfema/api
+    type: Documentation
+  - url: https://www.fema.gov/openfema-data-page/ipaws-archived-alerts-v1
+    type: APIReference
+  - url: openapi/fema-openapi.yml
+    type: OpenAPI
+  description: Archive of public alerts issued through the Integrated Public
+    Alert and Warning System (IPAWS) - the federal system that aggregates
+    EAS, Wireless Emergency Alerts, and NOAA Weather Radio - returned as
+    Common Alerting Protocol (CAP) messages. Hierarchical/nested payload,
+    unique among OpenFEMA datasets.
+- aid: fema:fema-web-disaster-summaries-api
+  name: FEMA Web Disaster Summaries API
+  tags:
+  - Disasters
+  - Summaries
+  - NEMIS
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://www.fema.gov/openfema-data-page/fema-web-disaster-summaries-v1
+  baseURL: https://www.fema.gov/api/open/v1
+  properties:
+  - url: https://www.fema.gov/about/openfema/api
+    type: Documentation
+  - url: https://www.fema.gov/openfema-data-page/fema-web-disaster-summaries-v1
+    type: APIReference
+  - url: openapi/fema-openapi.yml
+    type: OpenAPI
+  description: Per-disaster financial summary totals - approved Individual
+    Assistance applications, Public Assistance obligations, and Hazard
+    Mitigation grant amounts - sourced raw from FEMA's NEMIS system of record.
+- aid: fema:fema-openfema-dataset-catalog-api
+  name: FEMA OpenFEMA Dataset Catalog API
+  tags:
+  - Metadata
+  - Catalog
+  - Data Dictionary
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://www.fema.gov/openfema-data-page/openfema-data-sets-v1
+  baseURL: https://www.fema.gov/api/open/v1
+  properties:
+  - url: https://www.fema.gov/about/openfema/api
+    type: Documentation
+  - url: https://www.fema.gov/openfema-data-page/openfema-data-sets-v1
+    type: APIReference
+  - url: openapi/fema-openapi.yml
+    type: OpenAPI
+  description: Self-describing metadata layer for the whole platform - the
+    OpenFemaDataSets endpoint lists every dataset and version, and the
+    OpenFemaDataSetFields endpoint returns the data dictionary (field name,
+    type, and description) for any dataset/version pair.
+common:
+- type: Website
+  url: https://www.fema.gov/
+- type: Documentation
+  url: https://www.fema.gov/about/openfema/api
+- type: RateLimits
+  url: rate-limits/fema-rate-limits.yml
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

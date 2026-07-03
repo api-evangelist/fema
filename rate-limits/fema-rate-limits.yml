@@ -1,0 +1,74 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
+provider: OpenFEMA
+providerId: fema
+created: '2026-07-03'
+modified: '2026-07-03'
+reconciled: false
+tags:
+- Government
+- Open Data
+- Rate Limiting
+- Pagination
+- Record Limits
+description: >-
+  OpenFEMA does not publish a per-account or per-IP request-rate limit (no
+  RPM/RPD ceiling, no API key or quota system). Instead, load is bounded per
+  call by a record-count limit: each request returns at most 1,000 records by
+  default, and at most 10,000 records even when $top is raised to its
+  maximum. Clients page through larger result sets with $skip (and
+  optionally $count to learn the total), or use the BETA $allrecords=true
+  parameter to force a single full-result download bypassing the 10,000-row
+  ceiling. For very large exports, FEMA recommends CSV or Parquet over JSON
+  to keep payload size manageable.
+notes: >-
+  No numeric requests-per-minute/day limit is documented; the constraint is
+  structural (records per call), not a token-bucket rate limit. Verify
+  current values against the live API documentation and the "Working with
+  Large Data Sets" guide on reconciliation, since OpenFEMA has changed these
+  mechanics before (e.g. $inlinecount to $count, $metadata on/off to
+  true/false).
+sources:
+- https://www.fema.gov/about/openfema/api
+- https://www.fema.gov/about/openfema/working-with-large-data-sets
+- https://www.fema.gov/about/openfema/developer-resources
+- https://www.fema.gov/about/openfema/changelog
+responseCodes:
+  throttled: null
+limits:
+- name: Default Records Per Call
+  scope: request
+  metric: records
+  limit: '1000'
+  notes: Applied when $top is not specified.
+- name: Maximum Records Per Call
+  scope: request
+  metric: records
+  limit: '10000'
+  notes: Ceiling even when $top is explicitly raised above this value.
+- name: Paging Beyond the Ceiling
+  scope: request
+  metric: records
+  limit: unbounded via $skip
+  notes: Use $skip (with $top) to page through result sets larger than 10000 records; add $count=true to learn the total matching record count up front.
+- name: Bulk Export
+  scope: request
+  metric: records
+  limit: unbounded via $allrecords=true (BETA)
+  notes: Forces the full result set to be returned in one download, bypassing the 10000-record $top ceiling. Intended for bulk/offline export, not interactive use.
+- name: API Key / Subscription
+  scope: account
+  metric: n/a
+  limit: none required
+  notes: The API is free, public, and does not require registration, an API key, or a subscription.
+policies:
+- name: No Authentication, No Quota
+  description: OpenFEMA is open government data; there is no per-account quota system to exceed or upgrade.
+- name: Prefer Compact Formats for Large Pulls
+  description: For large datasets, FEMA recommends $format=csv or $format=parquet over JSON to reduce payload size; Parquet also carries an embedded schema.
+- name: Metadata Envelope Toggle
+  description: Pass $metadata=false to drop the wrapping metadata object and reduce response overhead on high-volume automated pulls.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com
