@@ -181,6 +181,8 @@ apis:
     OpenFemaDataSetFields endpoint returns the data dictionary (field name,
     type, and description) for any dataset/version pair.
 common:
+- type: DomainSecurity
+  url: security/fema-domain-security.yml
 - type: Website
   url: https://www.fema.gov/
 - type: Documentation
