@@ -1,0 +1,104 @@
+generated: '2026-07-15'
+method: generated
+source: openapi/fema-openapi.yml
+description: Recommended x-agentic-access execution contracts, classified heuristically from
+  the OpenAPI. A governance starting point for exposing this API to AI agents — review and bind
+  audience per deployment. See research/curity/agentic-governance/.
+summary:
+  operations: 9
+  by_action_class:
+    connected: 9
+  by_consequence:
+    read: 9
+  human_in_the_loop_required: 0
+operations:
+- path: /v2/DisasterDeclarationsSummaries
+  method: get
+  operationId: listDisasterDeclarationsSummaries
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/PublicAssistanceFundedProjectsDetails
+  method: get
+  operationId: listPublicAssistanceFundedProjectsDetails
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v3/HazardMitigationAssistanceProjects
+  method: get
+  operationId: listHazardMitigationAssistanceProjects
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v2/FimaNfipPolicies
+  method: get
+  operationId: listFimaNfipPolicies
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v2/FimaNfipClaims
+  method: get
+  operationId: listFimaNfipClaims
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/IpawsArchivedAlerts
+  method: get
+  operationId: listIpawsArchivedAlerts
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/FemaWebDisasterSummaries
+  method: get
+  operationId: listFemaWebDisasterSummaries
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/OpenFemaDataSets
+  method: get
+  operationId: listOpenFemaDataSets
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/OpenFemaDataSetFields
+  method: get
+  operationId: listOpenFemaDataSetFields
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
