@@ -1,0 +1,196 @@
+openapi: 3.0.3
+info:
+  title: OpenFEMA Catalog Web Disaster Summaries API
+  description: OpenFEMA is FEMA's open data platform. It exposes a read-only RESTful API over individually versioned dataset endpoints (Entities) using OData-style query string parameters. No API key, subscription, or authentication is required. Responses default to JSON; CSV and Parquet are also available via $format. This document models the confirmed public dataset endpoints covering disaster declarations, public assistance, hazard mitigation, NFIP, IPAWS alerts, web disaster summaries, and the self-describing dataset/field catalog. Field lists shown here are representative, not exhaustive - the full data dictionary for any dataset/version is available live from the OpenFemaDataSetFields endpoint modeled below.
+  termsOfService: https://www.fema.gov/about/website-information/privacy-policy
+  contact:
+    name: OpenFEMA
+    email: OpenFEMA@fema.dhs.gov
+    url: https://www.fema.gov/about/openfema
+  license:
+    name: Public Domain (U.S. Government Work)
+    url: https://www.usa.gov/government-works
+  version: '2.1'
+servers:
+- url: https://www.fema.gov/api/open
+  description: OpenFEMA production API (dataset version is part of each path)
+tags:
+- name: Web Disaster Summaries
+  description: Per-disaster financial summary totals from NEMIS.
+paths:
+  /v1/FemaWebDisasterSummaries:
+    get:
+      operationId: listFemaWebDisasterSummaries
+      tags:
+      - Web Disaster Summaries
+      summary: List FEMA web disaster summaries
+      description: Returns per-disaster financial summary totals (Individual Assistance, Public Assistance, and Hazard Mitigation) sourced raw from NEMIS.
+      parameters:
+      - $ref: '#/components/parameters/Filter'
+      - $ref: '#/components/parameters/Select'
+      - $ref: '#/components/parameters/Top'
+      - $ref: '#/components/parameters/Skip'
+      - $ref: '#/components/parameters/OrderBy'
+      - $ref: '#/components/parameters/Format'
+      - $ref: '#/components/parameters/Metadata'
+      - $ref: '#/components/parameters/Count'
+      - $ref: '#/components/parameters/AllRecords'
+      responses:
+        '200':
+          description: A page of FEMA web disaster summary records.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/OpenFemaEnvelope'
+                - type: object
+                  properties:
+                    FemaWebDisasterSummaries:
+                      type: array
+                      items:
+                        $ref: '#/components/schemas/FemaWebDisasterSummary'
+            text/csv:
+              schema:
+                type: string
+        '400':
+          $ref: '#/components/responses/BadFilter'
+components:
+  schemas:
+    FemaWebDisasterSummary:
+      type: object
+      description: One per-disaster raw financial summary sourced from NEMIS.
+      properties:
+        disasterNumber:
+          type: integer
+        totalNumberIaApproved:
+          type: integer
+        totalAmountIhpApproved:
+          type: number
+          format: double
+        totalObligatedAmountPa:
+          type: number
+          format: double
+        totalObligatedAmountHmgp:
+          type: number
+          format: double
+        paProgramDeclared:
+          type: boolean
+        iaProgramDeclared:
+          type: boolean
+        hmProgramDeclared:
+          type: boolean
+        disasterCloseoutDate:
+          type: string
+          format: date-time
+        hash:
+          type: string
+        lastRefresh:
+          type: string
+          format: date-time
+    OpenFemaEnvelope:
+      type: object
+      description: Every OpenFEMA response wraps the requested dataset array in a metadata object (unless $metadata=false is passed).
+      properties:
+        metadata:
+          type: object
+          properties:
+            skip:
+              type: integer
+            filter:
+              type: string
+            orderby:
+              type: string
+            select:
+              type: string
+            rundate:
+              type: string
+              format: date-time
+            count:
+              type: integer
+              description: Total matching records, present only when $count=true.
+            entityname:
+              type: string
+            version:
+              type: integer
+            url:
+              type: string
+  parameters:
+    Top:
+      name: $top
+      in: query
+      description: Number of records to return. Defaults to 1000 when omitted; maximum of 10000 per call.
+      schema:
+        type: integer
+        default: 1000
+        maximum: 10000
+        minimum: 1
+    Count:
+      name: $count
+      in: query
+      description: When true, includes the total matching record count in the metadata envelope. Replacement for the deprecated $inlinecount parameter.
+      schema:
+        type: boolean
+        default: false
+    Format:
+      name: $format
+      in: query
+      description: Response format. Defaults to json when omitted.
+      schema:
+        type: string
+        enum:
+        - json
+        - csv
+        - parquet
+        - jsona
+        - xlsx
+        default: json
+    Filter:
+      name: $filter
+      in: query
+      description: OData-style filter expression, e.g. state eq 'FL' and fyDeclared eq 2024. The parser is strict about spacing, quoting, and capitalization; string literals must be single-quoted.
+      schema:
+        type: string
+    Metadata:
+      name: $metadata
+      in: query
+      description: When false, suppresses the metadata envelope object and returns only the data array. Accepts true/false (the legacy on/off values are deprecated).
+      schema:
+        type: boolean
+        default: true
+    OrderBy:
+      name: $orderby
+      in: query
+      description: Field name to sort results by.
+      schema:
+        type: string
+    Select:
+      name: $select
+      in: query
+      description: Comma-separated list of fields to include in the response.
+      schema:
+        type: string
+    AllRecords:
+      name: $allrecords
+      in: query
+      description: BETA. When true, forces the full result set to be returned in one download, overriding the 10000-record $top ceiling. Intended for bulk export, not interactive paging.
+      schema:
+        type: boolean
+        default: false
+    Skip:
+      name: $skip
+      in: query
+      description: Number of records to skip, used to page through results beyond $top.
+      schema:
+        type: integer
+        default: 0
+        minimum: 0
+  responses:
+    BadFilter:
+      description: Malformed OData query string (commonly a $filter with incorrect quoting, spacing, or an unknown field name).
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
