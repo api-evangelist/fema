@@ -1,0 +1,26 @@
+{
+  "provider": "fema",
+  "sources": [
+    "fema-catalog-api-openapi.yml",
+    "fema-disaster-declarations-api-openapi.yml",
+    "fema-hazard-mitigation-api-openapi.yml",
+    "fema-ipaws-api-openapi.yml",
+    "fema-nfip-api-openapi.yml",
+    "fema-public-assistance-api-openapi.yml",
+    "fema-web-disaster-summaries-api-openapi.yml"
+  ],
+  "outputs": [
+    "fema-catalog-api-openapi.yml",
+    "fema-disaster-declarations-api-openapi.yml",
+    "fema-hazard-mitigation-api-openapi.yml",
+    "fema-ipaws-api-openapi.yml",
+    "fema-nfip-api-openapi.yml",
+    "fema-public-assistance-api-openapi.yml",
+    "fema-web-disaster-summaries-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
