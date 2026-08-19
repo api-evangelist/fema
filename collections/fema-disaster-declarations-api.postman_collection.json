@@ -1,0 +1,269 @@
+{
+  "item": [
+    {
+      "id": "0cc570e0-d4cc-47f5-b72e-b53d8bcd0806",
+      "name": "Disaster Declarations",
+      "description": {
+        "content": "Federally declared disasters.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "10968931-a936-41d8-8f66-6d1b2585a132",
+          "name": "List disaster declarations summaries",
+          "request": {
+            "name": "List disaster declarations summaries",
+            "description": {
+              "content": "Returns summarized records for every official FEMA disaster declaration since 1953 - major disaster, emergency, and fire management assistance declarations.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "DisasterDeclarationsSummaries"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "$filter",
+                  "value": "<string>",
+                  "description": "OData-style filter expression, e.g. state eq 'FL' and fyDeclared eq 2024. The parser is strict about spacing, quoting, and capitalization; string literals must be single-quoted."
+                },
+                {
+                  "disabled": false,
+                  "key": "$select",
+                  "value": "<string>",
+                  "description": "Comma-separated list of fields to include in the response."
+                },
+                {
+                  "disabled": false,
+                  "key": "$top",
+                  "value": "1000",
+                  "description": "Number of records to return. Defaults to 1000 when omitted; maximum of 10000 per call."
+                },
+                {
+                  "disabled": false,
+                  "key": "$skip",
+                  "value": "0",
+                  "description": "Number of records to skip, used to page through results beyond $top."
+                },
+                {
+                  "disabled": false,
+                  "key": "$orderby",
+                  "value": "<string>",
+                  "description": "Field name to sort results by."
+                },
+                {
+                  "disabled": false,
+                  "key": "$format",
+                  "value": "json",
+                  "description": "Response format. Defaults to json when omitted."
+                },
+                {
+                  "disabled": false,
+                  "key": "$metadata",
+                  "value": "true",
+                  "description": "When false, suppresses the metadata envelope object and returns only the data array. Accepts true/false (the legacy on/off values are deprecated)."
+                },
+                {
+                  "disabled": false,
+                  "key": "$count",
+                  "value": "false",
+                  "description": "When true, includes the total matching record count in the metadata envelope. Replacement for the deprecated $inlinecount parameter."
+                },
+                {
+                  "disabled": false,
+                  "key": "$allrecords",
+                  "value": "false",
+                  "description": "BETA. When true, forces the full result set to be returned in one download, overriding the 10000-record $top ceiling. Intended for bulk export, not interactive paging."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7e172ae6-bb39-4f88-993b-f5698508565d",
+              "name": "A page of disaster declarations summary records.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "DisasterDeclarationsSummaries"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$top",
+                      "value": "1000"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "0"
+                    },
+                    {
+                      "key": "$orderby",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$format",
+                      "value": "json"
+                    },
+                    {
+                      "key": "$metadata",
+                      "value": "true"
+                    },
+                    {
+                      "key": "$count",
+                      "value": "false"
+                    },
+                    {
+                      "key": "$allrecords",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"metadata\": {\n    \"skip\": 5689,\n    \"filter\": \"string\",\n    \"orderby\": \"string\",\n    \"select\": \"string\",\n    \"rundate\": \"2019-01-15T02:17:46.114Z\",\n    \"count\": 1994,\n    \"entityname\": \"string\",\n    \"version\": 1495,\n    \"url\": \"string\"\n  },\n  \"DisasterDeclarationsSummaries\": [\n    {\n      \"femaDeclarationString\": \"string\",\n      \"disasterNumber\": 593,\n      \"state\": \"string\",\n      \"declarationType\": \"string\",\n      \"declarationDate\": \"1996-12-21T09:46:03.739Z\",\n      \"fyDeclared\": 4396,\n      \"incidentType\": \"string\",\n      \"declarationTitle\": \"string\",\n      \"incidentBeginDate\": \"1951-05-09T04:13:12.796Z\",\n      \"incidentEndDate\": \"1954-12-20T14:29:24.524Z\",\n      \"fipsStateCode\": \"string\",\n      \"fipsCountyCode\": \"string\",\n      \"designatedArea\": \"string\",\n      \"ihProgramDeclared\": true,\n      \"iaProgramDeclared\": false,\n      \"paProgramDeclared\": false,\n      \"hmProgramDeclared\": true,\n      \"hash\": \"string\",\n      \"lastRefresh\": \"2017-08-06T13:06:37.622Z\",\n      \"id\": \"string\"\n    },\n    {\n      \"femaDeclarationString\": \"string\",\n      \"disasterNumber\": 3945,\n      \"state\": \"string\",\n      \"declarationType\": \"string\",\n      \"declarationDate\": \"1953-08-07T12:26:20.076Z\",\n      \"fyDeclared\": 2651,\n      \"incidentType\": \"string\",\n      \"declarationTitle\": \"string\",\n      \"incidentBeginDate\": \"2008-07-19T02:04:21.886Z\",\n      \"incidentEndDate\": \"2022-12-10T14:38:03.703Z\",\n      \"fipsStateCode\": \"string\",\n      \"fipsCountyCode\": \"string\",\n      \"designatedArea\": \"string\",\n      \"ihProgramDeclared\": true,\n      \"iaProgramDeclared\": false,\n      \"paProgramDeclared\": false,\n      \"hmProgramDeclared\": false,\n      \"hash\": \"string\",\n      \"lastRefresh\": \"2009-04-11T06:09:46.463Z\",\n      \"id\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a5d73f9a-ce7f-4495-a882-91d56f9ec3b8",
+              "name": "Malformed OData query string (commonly a $filter with incorrect quoting, spacing, or an unknown field name).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "DisasterDeclarationsSummaries"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$top",
+                      "value": "1000"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "0"
+                    },
+                    {
+                      "key": "$orderby",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$format",
+                      "value": "json"
+                    },
+                    {
+                      "key": "$metadata",
+                      "value": "true"
+                    },
+                    {
+                      "key": "$count",
+                      "value": "false"
+                    },
+                    {
+                      "key": "$allrecords",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://www.fema.gov/api/open",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "719a9251-f30b-453c-a5a1-817ce4c4c4c5",
+    "name": "OpenFEMA Catalog Disaster Declarations API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "OpenFEMA is FEMA's open data platform. It exposes a read-only RESTful API over individually versioned dataset endpoints (Entities) using OData-style query string parameters. No API key, subscription, or authentication is required. Responses default to JSON; CSV and Parquet are also available via $format. This document models the confirmed public dataset endpoints covering disaster declarations, public assistance, hazard mitigation, NFIP, IPAWS alerts, web disaster summaries, and the self-describing dataset/field catalog. Field lists shown here are representative, not exhaustive - the full data dictionary for any dataset/version is available live from the OpenFemaDataSetFields endpoint modeled below.\n\nContact Support:\n Name: OpenFEMA\n Email: OpenFEMA@fema.dhs.gov",
+      "type": "text/plain"
+    }
+  }
+}

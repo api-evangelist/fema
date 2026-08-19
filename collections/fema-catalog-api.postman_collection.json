@@ -1,0 +1,450 @@
+{
+  "item": [
+    {
+      "id": "a53c8e52-8966-4f37-8bd0-63a7bd4e880b",
+      "name": "Catalog",
+      "description": {
+        "content": "Self-describing metadata - dataset list and data dictionaries.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "389d7ba6-19ed-4217-ad89-52f96507f14c",
+          "name": "List the OpenFEMA dataset catalog",
+          "request": {
+            "name": "List the OpenFEMA dataset catalog",
+            "description": {
+              "content": "Returns metadata describing every dataset and version published on OpenFEMA - name, version, description, last-refresh date, record count, and whether an API endpoint exists for it.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "OpenFemaDataSets"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "$filter",
+                  "value": "<string>",
+                  "description": "OData-style filter expression, e.g. state eq 'FL' and fyDeclared eq 2024. The parser is strict about spacing, quoting, and capitalization; string literals must be single-quoted."
+                },
+                {
+                  "disabled": false,
+                  "key": "$select",
+                  "value": "<string>",
+                  "description": "Comma-separated list of fields to include in the response."
+                },
+                {
+                  "disabled": false,
+                  "key": "$top",
+                  "value": "1000",
+                  "description": "Number of records to return. Defaults to 1000 when omitted; maximum of 10000 per call."
+                },
+                {
+                  "disabled": false,
+                  "key": "$skip",
+                  "value": "0",
+                  "description": "Number of records to skip, used to page through results beyond $top."
+                },
+                {
+                  "disabled": false,
+                  "key": "$orderby",
+                  "value": "<string>",
+                  "description": "Field name to sort results by."
+                },
+                {
+                  "disabled": false,
+                  "key": "$format",
+                  "value": "json",
+                  "description": "Response format. Defaults to json when omitted."
+                },
+                {
+                  "disabled": false,
+                  "key": "$metadata",
+                  "value": "true",
+                  "description": "When false, suppresses the metadata envelope object and returns only the data array. Accepts true/false (the legacy on/off values are deprecated)."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1821e767-be5f-4fb9-88d1-2b18f9488913",
+              "name": "A page of dataset catalog records.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "OpenFemaDataSets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$top",
+                      "value": "1000"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "0"
+                    },
+                    {
+                      "key": "$orderby",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$format",
+                      "value": "json"
+                    },
+                    {
+                      "key": "$metadata",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"metadata\": {\n    \"skip\": 5551,\n    \"filter\": \"string\",\n    \"orderby\": \"string\",\n    \"select\": \"string\",\n    \"rundate\": \"2005-06-16T15:55:46.606Z\",\n    \"count\": 7115,\n    \"entityname\": \"string\",\n    \"version\": 7948,\n    \"url\": \"string\"\n  },\n  \"OpenFemaDataSets\": [\n    {\n      \"name\": \"string\",\n      \"title\": \"string\",\n      \"version\": 3766,\n      \"description\": \"string\",\n      \"webService\": \"string\",\n      \"lastDataSetRefresh\": \"1948-09-29T09:21:40.869Z\",\n      \"recordCount\": 2576,\n      \"dataDictionary\": \"string\"\n    },\n    {\n      \"name\": \"string\",\n      \"title\": \"string\",\n      \"version\": 5015,\n      \"description\": \"string\",\n      \"webService\": \"string\",\n      \"lastDataSetRefresh\": \"1960-07-23T04:57:36.750Z\",\n      \"recordCount\": 5475,\n      \"dataDictionary\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e9a22b74-d7e2-4990-8473-86912ee8115a",
+              "name": "Malformed OData query string (commonly a $filter with incorrect quoting, spacing, or an unknown field name).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "OpenFemaDataSets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$top",
+                      "value": "1000"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "0"
+                    },
+                    {
+                      "key": "$orderby",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$format",
+                      "value": "json"
+                    },
+                    {
+                      "key": "$metadata",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2ede1f6a-085c-4cee-9927-c8043ce4c024",
+          "name": "List the data dictionary for a dataset/version",
+          "request": {
+            "name": "List the data dictionary for a dataset/version",
+            "description": {
+              "content": "Returns the field-level data dictionary (name, title, type, description) for a given dataset name and version. Typically called with a $filter such as `openFemaDataSet eq 'DisasterDeclarationsSummaries' and datasetVersion eq 2`.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "OpenFemaDataSetFields"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "$filter",
+                  "value": "<string>",
+                  "description": "OData-style filter expression, e.g. state eq 'FL' and fyDeclared eq 2024. The parser is strict about spacing, quoting, and capitalization; string literals must be single-quoted."
+                },
+                {
+                  "disabled": false,
+                  "key": "$select",
+                  "value": "<string>",
+                  "description": "Comma-separated list of fields to include in the response."
+                },
+                {
+                  "disabled": false,
+                  "key": "$top",
+                  "value": "1000",
+                  "description": "Number of records to return. Defaults to 1000 when omitted; maximum of 10000 per call."
+                },
+                {
+                  "disabled": false,
+                  "key": "$skip",
+                  "value": "0",
+                  "description": "Number of records to skip, used to page through results beyond $top."
+                },
+                {
+                  "disabled": false,
+                  "key": "$orderby",
+                  "value": "<string>",
+                  "description": "Field name to sort results by."
+                },
+                {
+                  "disabled": false,
+                  "key": "$format",
+                  "value": "json",
+                  "description": "Response format. Defaults to json when omitted."
+                },
+                {
+                  "disabled": false,
+                  "key": "$metadata",
+                  "value": "true",
+                  "description": "When false, suppresses the metadata envelope object and returns only the data array. Accepts true/false (the legacy on/off values are deprecated)."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c962acb5-5d2a-4021-89b2-afa9a4ecfc39",
+              "name": "A page of data dictionary field records.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "OpenFemaDataSetFields"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$top",
+                      "value": "1000"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "0"
+                    },
+                    {
+                      "key": "$orderby",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$format",
+                      "value": "json"
+                    },
+                    {
+                      "key": "$metadata",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"metadata\": {\n    \"skip\": 434,\n    \"filter\": \"string\",\n    \"orderby\": \"string\",\n    \"select\": \"string\",\n    \"rundate\": \"2009-11-16T21:24:02.523Z\",\n    \"count\": 3344,\n    \"entityname\": \"string\",\n    \"version\": 2536,\n    \"url\": \"string\"\n  },\n  \"OpenFemaDataSetFields\": [\n    {\n      \"openFemaDataSet\": \"string\",\n      \"datasetVersion\": 8200,\n      \"name\": \"string\",\n      \"title\": \"string\",\n      \"type\": \"string\",\n      \"description\": \"string\"\n    },\n    {\n      \"openFemaDataSet\": \"string\",\n      \"datasetVersion\": 7683,\n      \"name\": \"string\",\n      \"title\": \"string\",\n      \"type\": \"string\",\n      \"description\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1b3eb8be-1159-4d66-90e5-d07a0cc45cbf",
+              "name": "Malformed OData query string (commonly a $filter with incorrect quoting, spacing, or an unknown field name).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "OpenFemaDataSetFields"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$top",
+                      "value": "1000"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "0"
+                    },
+                    {
+                      "key": "$orderby",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$format",
+                      "value": "json"
+                    },
+                    {
+                      "key": "$metadata",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://www.fema.gov/api/open",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "c3d084bd-f655-4e9b-be25-44d2a47477d1",
+    "name": "OpenFEMA Catalog API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "OpenFEMA is FEMA's open data platform. It exposes a read-only RESTful API over individually versioned dataset endpoints (Entities) using OData-style query string parameters. No API key, subscription, or authentication is required. Responses default to JSON; CSV and Parquet are also available via $format. This document models the confirmed public dataset endpoints covering disaster declarations, public assistance, hazard mitigation, NFIP, IPAWS alerts, web disaster summaries, and the self-describing dataset/field catalog. Field lists shown here are representative, not exhaustive - the full data dictionary for any dataset/version is available live from the OpenFemaDataSetFields endpoint modeled below.\n\nContact Support:\n Name: OpenFEMA\n Email: OpenFEMA@fema.dhs.gov",
+      "type": "text/plain"
+    }
+  }
+}

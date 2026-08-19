@@ -1,0 +1,269 @@
+{
+  "item": [
+    {
+      "id": "5624e2c8-74b6-4d1d-91b8-66a77f0ed5a4",
+      "name": "Public Assistance",
+      "description": {
+        "content": "FEMA Public Assistance (PA) grant program data.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "29cad2c3-2712-4842-a62a-e9f666d8df96",
+          "name": "List Public Assistance funded projects details",
+          "request": {
+            "name": "List Public Assistance funded projects details",
+            "description": {
+              "content": "Returns obligated Public Assistance grant projects (project worksheets), joinable to Public Assistance Applicants via applicantId.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "PublicAssistanceFundedProjectsDetails"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "$filter",
+                  "value": "<string>",
+                  "description": "OData-style filter expression, e.g. state eq 'FL' and fyDeclared eq 2024. The parser is strict about spacing, quoting, and capitalization; string literals must be single-quoted."
+                },
+                {
+                  "disabled": false,
+                  "key": "$select",
+                  "value": "<string>",
+                  "description": "Comma-separated list of fields to include in the response."
+                },
+                {
+                  "disabled": false,
+                  "key": "$top",
+                  "value": "1000",
+                  "description": "Number of records to return. Defaults to 1000 when omitted; maximum of 10000 per call."
+                },
+                {
+                  "disabled": false,
+                  "key": "$skip",
+                  "value": "0",
+                  "description": "Number of records to skip, used to page through results beyond $top."
+                },
+                {
+                  "disabled": false,
+                  "key": "$orderby",
+                  "value": "<string>",
+                  "description": "Field name to sort results by."
+                },
+                {
+                  "disabled": false,
+                  "key": "$format",
+                  "value": "json",
+                  "description": "Response format. Defaults to json when omitted."
+                },
+                {
+                  "disabled": false,
+                  "key": "$metadata",
+                  "value": "true",
+                  "description": "When false, suppresses the metadata envelope object and returns only the data array. Accepts true/false (the legacy on/off values are deprecated)."
+                },
+                {
+                  "disabled": false,
+                  "key": "$count",
+                  "value": "false",
+                  "description": "When true, includes the total matching record count in the metadata envelope. Replacement for the deprecated $inlinecount parameter."
+                },
+                {
+                  "disabled": false,
+                  "key": "$allrecords",
+                  "value": "false",
+                  "description": "BETA. When true, forces the full result set to be returned in one download, overriding the 10000-record $top ceiling. Intended for bulk export, not interactive paging."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5714938a-c2b3-4447-bcd4-191d85aa3db7",
+              "name": "A page of Public Assistance funded project detail records.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "PublicAssistanceFundedProjectsDetails"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$top",
+                      "value": "1000"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "0"
+                    },
+                    {
+                      "key": "$orderby",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$format",
+                      "value": "json"
+                    },
+                    {
+                      "key": "$metadata",
+                      "value": "true"
+                    },
+                    {
+                      "key": "$count",
+                      "value": "false"
+                    },
+                    {
+                      "key": "$allrecords",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"metadata\": {\n    \"skip\": 5010,\n    \"filter\": \"string\",\n    \"orderby\": \"string\",\n    \"select\": \"string\",\n    \"rundate\": \"1960-11-27T20:32:46.840Z\",\n    \"count\": 6558,\n    \"entityname\": \"string\",\n    \"version\": 701,\n    \"url\": \"string\"\n  },\n  \"PublicAssistanceFundedProjectsDetails\": [\n    {\n      \"disasterNumber\": 3113,\n      \"applicantId\": \"string\",\n      \"pwNumber\": \"string\",\n      \"projectSize\": \"string\",\n      \"damageCategoryCode\": \"string\",\n      \"projectAmount\": 8090.50012250024,\n      \"federalShareObligated\": 622.5873503106483,\n      \"totalObligated\": 2754.342866511841,\n      \"dcc\": \"string\",\n      \"applicantName\": \"string\",\n      \"county\": \"string\",\n      \"state\": \"string\",\n      \"obligatedDate\": \"1973-01-22T03:24:48.453Z\",\n      \"hash\": \"string\",\n      \"lastRefresh\": \"1985-05-01T01:31:26.186Z\",\n      \"id\": \"string\"\n    },\n    {\n      \"disasterNumber\": 8277,\n      \"applicantId\": \"string\",\n      \"pwNumber\": \"string\",\n      \"projectSize\": \"string\",\n      \"damageCategoryCode\": \"string\",\n      \"projectAmount\": 2674.8061933127888,\n      \"federalShareObligated\": 924.5026092762055,\n      \"totalObligated\": 1090.5133253380873,\n      \"dcc\": \"string\",\n      \"applicantName\": \"string\",\n      \"county\": \"string\",\n      \"state\": \"string\",\n      \"obligatedDate\": \"1999-12-18T13:37:59.923Z\",\n      \"hash\": \"string\",\n      \"lastRefresh\": \"1971-12-16T23:49:54.737Z\",\n      \"id\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f970f2c2-23b0-4915-860c-c3e9cad78453",
+              "name": "Malformed OData query string (commonly a $filter with incorrect quoting, spacing, or an unknown field name).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "PublicAssistanceFundedProjectsDetails"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$top",
+                      "value": "1000"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "0"
+                    },
+                    {
+                      "key": "$orderby",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$format",
+                      "value": "json"
+                    },
+                    {
+                      "key": "$metadata",
+                      "value": "true"
+                    },
+                    {
+                      "key": "$count",
+                      "value": "false"
+                    },
+                    {
+                      "key": "$allrecords",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://www.fema.gov/api/open",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "820b80d6-24ed-4d40-b7f3-863eb2239d7f",
+    "name": "OpenFEMA Catalog Public Assistance API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "OpenFEMA is FEMA's open data platform. It exposes a read-only RESTful API over individually versioned dataset endpoints (Entities) using OData-style query string parameters. No API key, subscription, or authentication is required. Responses default to JSON; CSV and Parquet are also available via $format. This document models the confirmed public dataset endpoints covering disaster declarations, public assistance, hazard mitigation, NFIP, IPAWS alerts, web disaster summaries, and the self-describing dataset/field catalog. Field lists shown here are representative, not exhaustive - the full data dictionary for any dataset/version is available live from the OpenFemaDataSetFields endpoint modeled below.\n\nContact Support:\n Name: OpenFEMA\n Email: OpenFEMA@fema.dhs.gov",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,269 @@
+{
+  "item": [
+    {
+      "id": "acb9ee9f-b50c-43e0-946e-d6994f553238",
+      "name": "IPAWS",
+      "description": {
+        "content": "Integrated Public Alert and Warning System archived alerts.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "319709fd-1183-4b59-8715-8e4490209205",
+          "name": "List IPAWS archived alerts",
+          "request": {
+            "name": "List IPAWS archived alerts",
+            "description": {
+              "content": "Returns archived Common Alerting Protocol (CAP) messages issued through the Integrated Public Alert and Warning System. The payload is hierarchical/nested, unlike most other OpenFEMA datasets.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "IpawsArchivedAlerts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "$filter",
+                  "value": "<string>",
+                  "description": "OData-style filter expression, e.g. state eq 'FL' and fyDeclared eq 2024. The parser is strict about spacing, quoting, and capitalization; string literals must be single-quoted."
+                },
+                {
+                  "disabled": false,
+                  "key": "$select",
+                  "value": "<string>",
+                  "description": "Comma-separated list of fields to include in the response."
+                },
+                {
+                  "disabled": false,
+                  "key": "$top",
+                  "value": "1000",
+                  "description": "Number of records to return. Defaults to 1000 when omitted; maximum of 10000 per call."
+                },
+                {
+                  "disabled": false,
+                  "key": "$skip",
+                  "value": "0",
+                  "description": "Number of records to skip, used to page through results beyond $top."
+                },
+                {
+                  "disabled": false,
+                  "key": "$orderby",
+                  "value": "<string>",
+                  "description": "Field name to sort results by."
+                },
+                {
+                  "disabled": false,
+                  "key": "$format",
+                  "value": "json",
+                  "description": "Response format. Defaults to json when omitted."
+                },
+                {
+                  "disabled": false,
+                  "key": "$metadata",
+                  "value": "true",
+                  "description": "When false, suppresses the metadata envelope object and returns only the data array. Accepts true/false (the legacy on/off values are deprecated)."
+                },
+                {
+                  "disabled": false,
+                  "key": "$count",
+                  "value": "false",
+                  "description": "When true, includes the total matching record count in the metadata envelope. Replacement for the deprecated $inlinecount parameter."
+                },
+                {
+                  "disabled": false,
+                  "key": "$allrecords",
+                  "value": "false",
+                  "description": "BETA. When true, forces the full result set to be returned in one download, overriding the 10000-record $top ceiling. Intended for bulk export, not interactive paging."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e7fa4180-7cb3-413e-9d7c-d510775fd35c",
+              "name": "A page of IPAWS archived alert records.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "IpawsArchivedAlerts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$top",
+                      "value": "1000"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "0"
+                    },
+                    {
+                      "key": "$orderby",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$format",
+                      "value": "json"
+                    },
+                    {
+                      "key": "$metadata",
+                      "value": "true"
+                    },
+                    {
+                      "key": "$count",
+                      "value": "false"
+                    },
+                    {
+                      "key": "$allrecords",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"metadata\": {\n    \"skip\": 5115,\n    \"filter\": \"string\",\n    \"orderby\": \"string\",\n    \"select\": \"string\",\n    \"rundate\": \"1986-01-24T06:58:16.752Z\",\n    \"count\": 996,\n    \"entityname\": \"string\",\n    \"version\": 6711,\n    \"url\": \"string\"\n  },\n  \"IpawsArchivedAlerts\": [\n    {\n      \"id\": \"string\",\n      \"identifier\": \"string\",\n      \"sender\": \"string\",\n      \"sent\": \"1985-09-23T21:45:36.312Z\",\n      \"status\": \"string\",\n      \"msgType\": \"string\",\n      \"scope\": \"string\",\n      \"searchGeometry\": \"string\",\n      \"infos\": [\n        {\n          \"language\": \"string\",\n          \"category\": \"string\",\n          \"event\": \"string\",\n          \"urgency\": \"string\",\n          \"severity\": \"string\",\n          \"certainty\": \"string\",\n          \"headline\": \"string\",\n          \"description\": \"string\",\n          \"area\": [\n            {\n              \"areaDesc\": \"string\",\n              \"polygon\": \"string\"\n            },\n            {\n              \"areaDesc\": \"string\",\n              \"polygon\": \"string\"\n            }\n          ]\n        },\n        {\n          \"language\": \"string\",\n          \"category\": \"string\",\n          \"event\": \"string\",\n          \"urgency\": \"string\",\n          \"severity\": \"string\",\n          \"certainty\": \"string\",\n          \"headline\": \"string\",\n          \"description\": \"string\",\n          \"area\": [\n            {\n              \"areaDesc\": \"string\",\n              \"polygon\": \"string\"\n            },\n            {\n              \"areaDesc\": \"string\",\n              \"polygon\": \"string\"\n            }\n          ]\n        }\n      ],\n      \"originalMessage\": \"string\",\n      \"lastRefresh\": \"1980-06-27T08:15:24.511Z\"\n    },\n    {\n      \"id\": \"string\",\n      \"identifier\": \"string\",\n      \"sender\": \"string\",\n      \"sent\": \"1957-05-06T06:32:04.131Z\",\n      \"status\": \"string\",\n      \"msgType\": \"string\",\n      \"scope\": \"string\",\n      \"searchGeometry\": \"string\",\n      \"infos\": [\n        {\n          \"language\": \"string\",\n          \"category\": \"string\",\n          \"event\": \"string\",\n          \"urgency\": \"string\",\n          \"severity\": \"string\",\n          \"certainty\": \"string\",\n          \"headline\": \"string\",\n          \"description\": \"string\",\n          \"area\": [\n            {\n              \"areaDesc\": \"string\",\n              \"polygon\": \"string\"\n            },\n            {\n              \"areaDesc\": \"string\",\n              \"polygon\": \"string\"\n            }\n          ]\n        },\n        {\n          \"language\": \"string\",\n          \"category\": \"string\",\n          \"event\": \"string\",\n          \"urgency\": \"string\",\n          \"severity\": \"string\",\n          \"certainty\": \"string\",\n          \"headline\": \"string\",\n          \"description\": \"string\",\n          \"area\": [\n            {\n              \"areaDesc\": \"string\",\n              \"polygon\": \"string\"\n            },\n            {\n              \"areaDesc\": \"string\",\n              \"polygon\": \"string\"\n            }\n          ]\n        }\n      ],\n      \"originalMessage\": \"string\",\n      \"lastRefresh\": \"1952-10-20T18:31:31.294Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "df94a757-1bfa-4e91-b970-20fc8c6f190a",
+              "name": "Malformed OData query string (commonly a $filter with incorrect quoting, spacing, or an unknown field name).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "IpawsArchivedAlerts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$top",
+                      "value": "1000"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "0"
+                    },
+                    {
+                      "key": "$orderby",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$format",
+                      "value": "json"
+                    },
+                    {
+                      "key": "$metadata",
+                      "value": "true"
+                    },
+                    {
+                      "key": "$count",
+                      "value": "false"
+                    },
+                    {
+                      "key": "$allrecords",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://www.fema.gov/api/open",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "442de43a-5aa3-43db-aca0-f0eb83aeace5",
+    "name": "OpenFEMA Catalog IPAWS API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "OpenFEMA is FEMA's open data platform. It exposes a read-only RESTful API over individually versioned dataset endpoints (Entities) using OData-style query string parameters. No API key, subscription, or authentication is required. Responses default to JSON; CSV and Parquet are also available via $format. This document models the confirmed public dataset endpoints covering disaster declarations, public assistance, hazard mitigation, NFIP, IPAWS alerts, web disaster summaries, and the self-describing dataset/field catalog. Field lists shown here are representative, not exhaustive - the full data dictionary for any dataset/version is available live from the OpenFemaDataSetFields endpoint modeled below.\n\nContact Support:\n Name: OpenFEMA\n Email: OpenFEMA@fema.dhs.gov",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,85 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OpenFEMA Catalog IPAWS API",
+    "version": "2.1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "IPAWS",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List IPAWS archived alerts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.fema.gov/api/open/v1/IpawsArchivedAlerts",
+            "params": [
+              {
+                "name": "$filter",
+                "value": "",
+                "type": "query",
+                "description": "OData-style filter expression, e.g. state eq 'FL' and fyDeclared eq 2024. The parser is strict about spacing, quoting, and capitalization; string literals must be single-quoted."
+              },
+              {
+                "name": "$select",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of fields to include in the response."
+              },
+              {
+                "name": "$top",
+                "value": "",
+                "type": "query",
+                "description": "Number of records to return. Defaults to 1000 when omitted; maximum of 10000 per call."
+              },
+              {
+                "name": "$skip",
+                "value": "",
+                "type": "query",
+                "description": "Number of records to skip, used to page through results beyond $top."
+              },
+              {
+                "name": "$orderby",
+                "value": "",
+                "type": "query",
+                "description": "Field name to sort results by."
+              },
+              {
+                "name": "$format",
+                "value": "",
+                "type": "query",
+                "description": "Response format. Defaults to json when omitted."
+              },
+              {
+                "name": "$metadata",
+                "value": "",
+                "type": "query",
+                "description": "When false, suppresses the metadata envelope object and returns only the data array. Accepts true/false (the legacy on/off values are deprecated)."
+              },
+              {
+                "name": "$count",
+                "value": "",
+                "type": "query",
+                "description": "When true, includes the total matching record count in the metadata envelope. Replacement for the deprecated $inlinecount parameter."
+              },
+              {
+                "name": "$allrecords",
+                "value": "",
+                "type": "query",
+                "description": "BETA. When true, forces the full result set to be returned in one download, overriding the 10000-record $top ceiling. Intended for bulk export, not interactive paging."
+              }
+            ]
+          },
+          "docs": "Returns archived Common Alerting Protocol (CAP) messages issued through the Integrated Public Alert and Warning System. The payload is hierarchical/nested, unlike most other OpenFEMA datasets."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

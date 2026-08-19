@@ -1,0 +1,269 @@
+{
+  "item": [
+    {
+      "id": "86c93e4c-e4bb-4167-b930-b8c6a3595dd6",
+      "name": "Web Disaster Summaries",
+      "description": {
+        "content": "Per-disaster financial summary totals from NEMIS.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "2ef34ad8-4c96-4d1f-878b-228fd2cc7b89",
+          "name": "List FEMA web disaster summaries",
+          "request": {
+            "name": "List FEMA web disaster summaries",
+            "description": {
+              "content": "Returns per-disaster financial summary totals (Individual Assistance, Public Assistance, and Hazard Mitigation) sourced raw from NEMIS.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "FemaWebDisasterSummaries"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "$filter",
+                  "value": "<string>",
+                  "description": "OData-style filter expression, e.g. state eq 'FL' and fyDeclared eq 2024. The parser is strict about spacing, quoting, and capitalization; string literals must be single-quoted."
+                },
+                {
+                  "disabled": false,
+                  "key": "$select",
+                  "value": "<string>",
+                  "description": "Comma-separated list of fields to include in the response."
+                },
+                {
+                  "disabled": false,
+                  "key": "$top",
+                  "value": "1000",
+                  "description": "Number of records to return. Defaults to 1000 when omitted; maximum of 10000 per call."
+                },
+                {
+                  "disabled": false,
+                  "key": "$skip",
+                  "value": "0",
+                  "description": "Number of records to skip, used to page through results beyond $top."
+                },
+                {
+                  "disabled": false,
+                  "key": "$orderby",
+                  "value": "<string>",
+                  "description": "Field name to sort results by."
+                },
+                {
+                  "disabled": false,
+                  "key": "$format",
+                  "value": "json",
+                  "description": "Response format. Defaults to json when omitted."
+                },
+                {
+                  "disabled": false,
+                  "key": "$metadata",
+                  "value": "true",
+                  "description": "When false, suppresses the metadata envelope object and returns only the data array. Accepts true/false (the legacy on/off values are deprecated)."
+                },
+                {
+                  "disabled": false,
+                  "key": "$count",
+                  "value": "false",
+                  "description": "When true, includes the total matching record count in the metadata envelope. Replacement for the deprecated $inlinecount parameter."
+                },
+                {
+                  "disabled": false,
+                  "key": "$allrecords",
+                  "value": "false",
+                  "description": "BETA. When true, forces the full result set to be returned in one download, overriding the 10000-record $top ceiling. Intended for bulk export, not interactive paging."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "63b3d974-a712-4ae8-9ee3-db91f94a6dcc",
+              "name": "A page of FEMA web disaster summary records.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "FemaWebDisasterSummaries"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$top",
+                      "value": "1000"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "0"
+                    },
+                    {
+                      "key": "$orderby",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$format",
+                      "value": "json"
+                    },
+                    {
+                      "key": "$metadata",
+                      "value": "true"
+                    },
+                    {
+                      "key": "$count",
+                      "value": "false"
+                    },
+                    {
+                      "key": "$allrecords",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"metadata\": {\n    \"skip\": 1875,\n    \"filter\": \"string\",\n    \"orderby\": \"string\",\n    \"select\": \"string\",\n    \"rundate\": \"2020-09-10T08:06:24.786Z\",\n    \"count\": 7764,\n    \"entityname\": \"string\",\n    \"version\": 357,\n    \"url\": \"string\"\n  },\n  \"FemaWebDisasterSummaries\": [\n    {\n      \"disasterNumber\": 5923,\n      \"totalNumberIaApproved\": 5123,\n      \"totalAmountIhpApproved\": 6598.169549604019,\n      \"totalObligatedAmountPa\": 3104.89115357785,\n      \"totalObligatedAmountHmgp\": 2516.0415637661936,\n      \"paProgramDeclared\": false,\n      \"iaProgramDeclared\": true,\n      \"hmProgramDeclared\": false,\n      \"disasterCloseoutDate\": \"1963-05-03T11:32:44.067Z\",\n      \"hash\": \"string\",\n      \"lastRefresh\": \"1950-09-03T02:40:48.389Z\"\n    },\n    {\n      \"disasterNumber\": 7067,\n      \"totalNumberIaApproved\": 2693,\n      \"totalAmountIhpApproved\": 9225.22271671216,\n      \"totalObligatedAmountPa\": 2463.6978256429397,\n      \"totalObligatedAmountHmgp\": 5296.5414064324805,\n      \"paProgramDeclared\": true,\n      \"iaProgramDeclared\": true,\n      \"hmProgramDeclared\": false,\n      \"disasterCloseoutDate\": \"2020-10-20T07:23:18.011Z\",\n      \"hash\": \"string\",\n      \"lastRefresh\": \"1979-10-16T12:32:25.982Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bf556f48-fd93-4c08-8396-a2d81526e961",
+              "name": "Malformed OData query string (commonly a $filter with incorrect quoting, spacing, or an unknown field name).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "FemaWebDisasterSummaries"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$top",
+                      "value": "1000"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "0"
+                    },
+                    {
+                      "key": "$orderby",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$format",
+                      "value": "json"
+                    },
+                    {
+                      "key": "$metadata",
+                      "value": "true"
+                    },
+                    {
+                      "key": "$count",
+                      "value": "false"
+                    },
+                    {
+                      "key": "$allrecords",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://www.fema.gov/api/open",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "bb32b033-633f-45a5-95cd-9aa291cba816",
+    "name": "OpenFEMA Catalog Web Disaster Summaries API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "OpenFEMA is FEMA's open data platform. It exposes a read-only RESTful API over individually versioned dataset endpoints (Entities) using OData-style query string parameters. No API key, subscription, or authentication is required. Responses default to JSON; CSV and Parquet are also available via $format. This document models the confirmed public dataset endpoints covering disaster declarations, public assistance, hazard mitigation, NFIP, IPAWS alerts, web disaster summaries, and the self-describing dataset/field catalog. Field lists shown here are representative, not exhaustive - the full data dictionary for any dataset/version is available live from the OpenFemaDataSetFields endpoint modeled below.\n\nContact Support:\n Name: OpenFEMA\n Email: OpenFEMA@fema.dhs.gov",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,506 @@
+{
+  "item": [
+    {
+      "id": "59e56fe2-2ae7-4b76-9c1b-79f9f7a6d291",
+      "name": "NFIP",
+      "description": {
+        "content": "National Flood Insurance Program redacted policy and claims data.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "8db6ccb8-59e4-4bc3-b5b7-125195a8f3fd",
+          "name": "List NFIP redacted policies",
+          "request": {
+            "name": "List NFIP redacted policies",
+            "description": {
+              "content": "Returns policy-level NFIP transactions redacted to protect policyholder personally identifiable information.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "FimaNfipPolicies"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "$filter",
+                  "value": "<string>",
+                  "description": "OData-style filter expression, e.g. state eq 'FL' and fyDeclared eq 2024. The parser is strict about spacing, quoting, and capitalization; string literals must be single-quoted."
+                },
+                {
+                  "disabled": false,
+                  "key": "$select",
+                  "value": "<string>",
+                  "description": "Comma-separated list of fields to include in the response."
+                },
+                {
+                  "disabled": false,
+                  "key": "$top",
+                  "value": "1000",
+                  "description": "Number of records to return. Defaults to 1000 when omitted; maximum of 10000 per call."
+                },
+                {
+                  "disabled": false,
+                  "key": "$skip",
+                  "value": "0",
+                  "description": "Number of records to skip, used to page through results beyond $top."
+                },
+                {
+                  "disabled": false,
+                  "key": "$orderby",
+                  "value": "<string>",
+                  "description": "Field name to sort results by."
+                },
+                {
+                  "disabled": false,
+                  "key": "$format",
+                  "value": "json",
+                  "description": "Response format. Defaults to json when omitted."
+                },
+                {
+                  "disabled": false,
+                  "key": "$metadata",
+                  "value": "true",
+                  "description": "When false, suppresses the metadata envelope object and returns only the data array. Accepts true/false (the legacy on/off values are deprecated)."
+                },
+                {
+                  "disabled": false,
+                  "key": "$count",
+                  "value": "false",
+                  "description": "When true, includes the total matching record count in the metadata envelope. Replacement for the deprecated $inlinecount parameter."
+                },
+                {
+                  "disabled": false,
+                  "key": "$allrecords",
+                  "value": "false",
+                  "description": "BETA. When true, forces the full result set to be returned in one download, overriding the 10000-record $top ceiling. Intended for bulk export, not interactive paging."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d278916c-4347-4abd-b572-26914988d5c4",
+              "name": "A page of redacted NFIP policy records.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "FimaNfipPolicies"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$top",
+                      "value": "1000"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "0"
+                    },
+                    {
+                      "key": "$orderby",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$format",
+                      "value": "json"
+                    },
+                    {
+                      "key": "$metadata",
+                      "value": "true"
+                    },
+                    {
+                      "key": "$count",
+                      "value": "false"
+                    },
+                    {
+                      "key": "$allrecords",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"metadata\": {\n    \"skip\": 6171,\n    \"filter\": \"string\",\n    \"orderby\": \"string\",\n    \"select\": \"string\",\n    \"rundate\": \"2017-06-20T23:20:34.405Z\",\n    \"count\": 2144,\n    \"entityname\": \"string\",\n    \"version\": 6103,\n    \"url\": \"string\"\n  },\n  \"FimaNfipPolicies\": [\n    {\n      \"id\": \"string\",\n      \"policyEffectiveDate\": \"2014-10-19\",\n      \"policyTerminationDate\": \"2024-09-04\",\n      \"totalBuildingInsuranceCoverage\": 6361.043599614503,\n      \"totalContentsInsuranceCoverage\": 3276.2847495284755,\n      \"totalInsurancePremiumOfThePolicy\": 6421.208817240857,\n      \"propertyState\": \"string\",\n      \"countyCode\": \"string\",\n      \"censusTract\": \"string\",\n      \"floodZone\": \"string\",\n      \"occupancyType\": 8962,\n      \"constructionDate\": \"2023-09-23\",\n      \"ratedFloodZone\": \"string\",\n      \"hash\": \"string\",\n      \"lastRefresh\": \"2022-10-02T22:16:25.652Z\"\n    },\n    {\n      \"id\": \"string\",\n      \"policyEffectiveDate\": \"1992-05-20\",\n      \"policyTerminationDate\": \"1986-12-27\",\n      \"totalBuildingInsuranceCoverage\": 6076.336435398012,\n      \"totalContentsInsuranceCoverage\": 8815.246349041354,\n      \"totalInsurancePremiumOfThePolicy\": 6229.990184286022,\n      \"propertyState\": \"string\",\n      \"countyCode\": \"string\",\n      \"censusTract\": \"string\",\n      \"floodZone\": \"string\",\n      \"occupancyType\": 1748,\n      \"constructionDate\": \"1984-12-05\",\n      \"ratedFloodZone\": \"string\",\n      \"hash\": \"string\",\n      \"lastRefresh\": \"1981-10-11T15:41:53.140Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3a5c4b50-5c22-4624-9cb7-de384c265bc0",
+              "name": "Malformed OData query string (commonly a $filter with incorrect quoting, spacing, or an unknown field name).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "FimaNfipPolicies"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$top",
+                      "value": "1000"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "0"
+                    },
+                    {
+                      "key": "$orderby",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$format",
+                      "value": "json"
+                    },
+                    {
+                      "key": "$metadata",
+                      "value": "true"
+                    },
+                    {
+                      "key": "$count",
+                      "value": "false"
+                    },
+                    {
+                      "key": "$allrecords",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3899de30-6e37-451e-81e1-c4679f695a42",
+          "name": "List NFIP redacted claims",
+          "request": {
+            "name": "List NFIP redacted claims",
+            "description": {
+              "content": "Returns NFIP claims transactions redacted to protect policyholder personally identifiable information.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "FimaNfipClaims"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "$filter",
+                  "value": "<string>",
+                  "description": "OData-style filter expression, e.g. state eq 'FL' and fyDeclared eq 2024. The parser is strict about spacing, quoting, and capitalization; string literals must be single-quoted."
+                },
+                {
+                  "disabled": false,
+                  "key": "$select",
+                  "value": "<string>",
+                  "description": "Comma-separated list of fields to include in the response."
+                },
+                {
+                  "disabled": false,
+                  "key": "$top",
+                  "value": "1000",
+                  "description": "Number of records to return. Defaults to 1000 when omitted; maximum of 10000 per call."
+                },
+                {
+                  "disabled": false,
+                  "key": "$skip",
+                  "value": "0",
+                  "description": "Number of records to skip, used to page through results beyond $top."
+                },
+                {
+                  "disabled": false,
+                  "key": "$orderby",
+                  "value": "<string>",
+                  "description": "Field name to sort results by."
+                },
+                {
+                  "disabled": false,
+                  "key": "$format",
+                  "value": "json",
+                  "description": "Response format. Defaults to json when omitted."
+                },
+                {
+                  "disabled": false,
+                  "key": "$metadata",
+                  "value": "true",
+                  "description": "When false, suppresses the metadata envelope object and returns only the data array. Accepts true/false (the legacy on/off values are deprecated)."
+                },
+                {
+                  "disabled": false,
+                  "key": "$count",
+                  "value": "false",
+                  "description": "When true, includes the total matching record count in the metadata envelope. Replacement for the deprecated $inlinecount parameter."
+                },
+                {
+                  "disabled": false,
+                  "key": "$allrecords",
+                  "value": "false",
+                  "description": "BETA. When true, forces the full result set to be returned in one download, overriding the 10000-record $top ceiling. Intended for bulk export, not interactive paging."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "cf085838-d6bf-42f2-a0b8-34974d9c692a",
+              "name": "A page of redacted NFIP claim records.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "FimaNfipClaims"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$top",
+                      "value": "1000"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "0"
+                    },
+                    {
+                      "key": "$orderby",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$format",
+                      "value": "json"
+                    },
+                    {
+                      "key": "$metadata",
+                      "value": "true"
+                    },
+                    {
+                      "key": "$count",
+                      "value": "false"
+                    },
+                    {
+                      "key": "$allrecords",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"metadata\": {\n    \"skip\": 9153,\n    \"filter\": \"string\",\n    \"orderby\": \"string\",\n    \"select\": \"string\",\n    \"rundate\": \"2005-08-23T05:31:47.389Z\",\n    \"count\": 4493,\n    \"entityname\": \"string\",\n    \"version\": 4545,\n    \"url\": \"string\"\n  },\n  \"FimaNfipClaims\": [\n    {\n      \"id\": \"string\",\n      \"dateOfLoss\": \"1994-02-06\",\n      \"state\": \"string\",\n      \"countyCode\": \"string\",\n      \"causeOfDamage\": \"string\",\n      \"floodZone\": \"string\",\n      \"amountPaidOnBuildingClaim\": 5642.022465664115,\n      \"amountPaidOnContentsClaim\": 9031.225986221947,\n      \"netTotalPayments\": 3016.0172919960514,\n      \"lowestFloorElevation\": 1423.136956734522,\n      \"occupancyType\": 3601,\n      \"yearOfLoss\": 3627,\n      \"hash\": \"string\",\n      \"lastRefresh\": \"1995-06-01T02:43:40.226Z\"\n    },\n    {\n      \"id\": \"string\",\n      \"dateOfLoss\": \"1964-11-12\",\n      \"state\": \"string\",\n      \"countyCode\": \"string\",\n      \"causeOfDamage\": \"string\",\n      \"floodZone\": \"string\",\n      \"amountPaidOnBuildingClaim\": 8541.998118742571,\n      \"amountPaidOnContentsClaim\": 2443.6271382011532,\n      \"netTotalPayments\": 1947.5902251680077,\n      \"lowestFloorElevation\": 3940.521143108625,\n      \"occupancyType\": 9990,\n      \"yearOfLoss\": 9214,\n      \"hash\": \"string\",\n      \"lastRefresh\": \"1969-04-05T16:10:35.649Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "42dcba7f-aa2d-4920-babf-2daf4af27dcf",
+              "name": "Malformed OData query string (commonly a $filter with incorrect quoting, spacing, or an unknown field name).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "FimaNfipClaims"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$top",
+                      "value": "1000"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "0"
+                    },
+                    {
+                      "key": "$orderby",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$format",
+                      "value": "json"
+                    },
+                    {
+                      "key": "$metadata",
+                      "value": "true"
+                    },
+                    {
+                      "key": "$count",
+                      "value": "false"
+                    },
+                    {
+                      "key": "$allrecords",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://www.fema.gov/api/open",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "0e9ebb32-1db4-488b-ae0d-6ae134d73536",
+    "name": "OpenFEMA Catalog NFIP API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "OpenFEMA is FEMA's open data platform. It exposes a read-only RESTful API over individually versioned dataset endpoints (Entities) using OData-style query string parameters. No API key, subscription, or authentication is required. Responses default to JSON; CSV and Parquet are also available via $format. This document models the confirmed public dataset endpoints covering disaster declarations, public assistance, hazard mitigation, NFIP, IPAWS alerts, web disaster summaries, and the self-describing dataset/field catalog. Field lists shown here are representative, not exhaustive - the full data dictionary for any dataset/version is available live from the OpenFemaDataSetFields endpoint modeled below.\n\nContact Support:\n Name: OpenFEMA\n Email: OpenFEMA@fema.dhs.gov",
+      "type": "text/plain"
+    }
+  }
+}
