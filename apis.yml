@@ -240,6 +240,9 @@ apis:
   - type: APIReference
     url: https://www.fema.gov/openfema-data-page/openfema-data-sets-v1
 common:
+- type: CapabilityMap
+  url: capabilities/fema-capability-edges.yml
+  name: OpenFEMA Business Capability Map
 - type: AgenticAccess
   url: agentic-access/fema-agentic-access.yml
 - type: DomainSecurity

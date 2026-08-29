@@ -1,0 +1,67 @@
+slug: fema
+provider: OpenFEMA
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Public Sector & Government
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 5
+edges:
+- tag: Disaster Declarations
+  spec_file: fema-disaster-declarations-api-openapi.yml
+  capability_id: BC-3310.50
+  capability_id_l1: BC-3310
+  capability_name: Disaster Response and Recovery
+  confidence: 0.85
+  evidence: GET /v2/DisasterDeclarationsSummaries listDisasterDeclarationsSummaries List disaster declarations
+    summaries
+  reason: The endpoint publishes federal disaster declaration records, which is exactly the artefact of
+    BC-3310.50 'Disaster declaration, response operations, individual and public assistance'. It is a
+    read-only data feed rather than the declaration workflow itself, hence 0.85 not 0.95.
+- tag: Hazard Mitigation
+  spec_file: fema-hazard-mitigation-api-openapi.yml
+  capability_id: BC-3310.40
+  capability_id_l1: BC-3310
+  capability_name: Disaster Preparedness and Mitigation
+  confidence: 0.8
+  evidence: GET /v3/HazardMitigationAssistanceProjects listHazardMitigationAssistanceProjects List Hazard
+    Mitigation Assistance projects
+  reason: Data on Hazard Mitigation Assistance projects maps to 'mitigation activity to prepare for disasters'
+    under BC-3310.40. Some ambiguity with grant administration (BC-3260) since these are funded projects,
+    so 0.8.
+- tag: IPAWS
+  spec_file: fema-ipaws-api-openapi.yml
+  capability_id: BC-3310
+  capability_id_l1: BC-3310
+  capability_name: Public Safety & Emergency Operations Management
+  confidence: 0.75
+  evidence: GET /v1/IpawsArchivedAlerts listIpawsArchivedAlerts List IPAWS archived alerts
+  reason: IPAWS archived alerts are records of public emergency alert and warning messages, clearly within
+    Public Safety & Emergency Operations. The nearest L2 (Emergency Communications and Dispatch) is about
+    inbound calls and CAD rather than outbound public warning, so only the L1 is asserted.
+- tag: Public Assistance
+  spec_file: fema-public-assistance-api-openapi.yml
+  capability_id: BC-3310.50
+  capability_id_l1: BC-3310
+  capability_name: Disaster Response and Recovery
+  confidence: 0.75
+  evidence: GET /v1/PublicAssistanceFundedProjectsDetails listPublicAssistanceFundedProjectsDetails List
+    Public Assistance funded projects details
+  reason: FEMA Public Assistance funded project data corresponds to BC-3310.50, which explicitly covers
+    'individual and public assistance, and long-term recovery coordination'. Competing reading as grant
+    award/monitoring (BC-3260) keeps confidence moderate.
+- tag: Web Disaster Summaries
+  spec_file: fema-web-disaster-summaries-api-openapi.yml
+  capability_id: BC-3310.50
+  capability_id_l1: BC-3310
+  capability_name: Disaster Response and Recovery
+  confidence: 0.7
+  evidence: GET /v1/FemaWebDisasterSummaries listFemaWebDisasterSummaries List FEMA web disaster summaries
+  reason: Summary records per declared disaster (obligated amounts, assistance totals) sit within disaster
+    response and recovery reporting. The summary is aggregate/reporting in nature, so confidence is moderate.
