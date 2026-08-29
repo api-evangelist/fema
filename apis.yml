@@ -9,6 +9,17 @@ description: OpenFEMA is FEMA's open data platform, publishing free, public,
   query string parameters ($filter, $select, $top, $skip, $orderby) over
   individually versioned dataset endpoints, requires no API key or
   subscription, and returns JSON, CSV, or Parquet.
+deliveryModel:
+  model: unknown
+  open_source: false
+  commercial: false
+  callable_host: true
+  label: Delivery model not determined — needs a product licence on record
+  confidence: low
+  source:
+  - openapi
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: unknown
   onboarding: open
