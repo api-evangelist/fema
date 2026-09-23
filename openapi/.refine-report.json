@@ -1,13 +1,7 @@
 {
   "provider": "fema",
   "sources": [
-    "fema-catalog-api-openapi.yml",
-    "fema-disaster-declarations-api-openapi.yml",
-    "fema-hazard-mitigation-api-openapi.yml",
-    "fema-ipaws-api-openapi.yml",
-    "fema-nfip-api-openapi.yml",
-    "fema-public-assistance-api-openapi.yml",
-    "fema-web-disaster-summaries-api-openapi.yml"
+    "_original/fema-openapi.yml"
   ],
   "outputs": [
     "fema-catalog-api-openapi.yml",
@@ -21,6 +15,18 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "fema-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "fema-catalog-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "fema-disaster-declarations-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "fema-hazard-mitigation-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "fema-ipaws-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "fema-nfip-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "fema-public-assistance-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "fema-web-disaster-summaries-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
