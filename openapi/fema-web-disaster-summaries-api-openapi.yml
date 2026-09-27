@@ -56,48 +56,6 @@ paths:
           $ref: '#/components/responses/BadFilter'
 components:
   parameters:
-    AllRecords:
-      name: $allrecords
-      in: query
-      description: BETA. When true, forces the full result set to be returned in one download, overriding the 10000-record $top ceiling. Intended for bulk export, not interactive paging.
-      schema:
-        type: boolean
-        default: false
-    Count:
-      name: $count
-      in: query
-      description: When true, includes the total matching record count in the metadata envelope. Replacement for the deprecated $inlinecount parameter.
-      schema:
-        type: boolean
-        default: false
-    Filter:
-      name: $filter
-      in: query
-      description: OData-style filter expression, e.g. state eq 'FL' and fyDeclared eq 2024. The parser is strict about spacing, quoting, and capitalization; string literals must be single-quoted.
-      schema:
-        type: string
-    Top:
-      name: $top
-      in: query
-      description: Number of records to return. Defaults to 1000 when omitted; maximum of 10000 per call.
-      schema:
-        type: integer
-        default: 1000
-        maximum: 10000
-        minimum: 1
-    OrderBy:
-      name: $orderby
-      in: query
-      description: Field name to sort results by.
-      schema:
-        type: string
-    Metadata:
-      name: $metadata
-      in: query
-      description: When false, suppresses the metadata envelope object and returns only the data array. Accepts true/false (the legacy on/off values are deprecated).
-      schema:
-        type: boolean
-        default: true
     Format:
       name: $format
       in: query
@@ -111,6 +69,38 @@ components:
         - jsona
         - xlsx
         default: json
+    Metadata:
+      name: $metadata
+      in: query
+      description: When false, suppresses the metadata envelope object and returns only the data array. Accepts true/false (the legacy on/off values are deprecated).
+      schema:
+        type: boolean
+        default: true
+    Filter:
+      name: $filter
+      in: query
+      description: OData-style filter expression, e.g. state eq 'FL' and fyDeclared eq 2024. The parser is strict about spacing, quoting, and capitalization; string literals must be single-quoted.
+      schema:
+        type: string
+    OrderBy:
+      name: $orderby
+      in: query
+      description: Field name to sort results by.
+      schema:
+        type: string
+    Count:
+      name: $count
+      in: query
+      description: When true, includes the total matching record count in the metadata envelope. Replacement for the deprecated $inlinecount parameter.
+      schema:
+        type: boolean
+        default: false
+    Select:
+      name: $select
+      in: query
+      description: Comma-separated list of fields to include in the response.
+      schema:
+        type: string
     Skip:
       name: $skip
       in: query
@@ -119,40 +109,33 @@ components:
         type: integer
         default: 0
         minimum: 0
-    Select:
-      name: $select
+    AllRecords:
+      name: $allrecords
       in: query
-      description: Comma-separated list of fields to include in the response.
+      description: BETA. When true, forces the full result set to be returned in one download, overriding the 10000-record $top ceiling. Intended for bulk export, not interactive paging.
       schema:
-        type: string
+        type: boolean
+        default: false
+    Top:
+      name: $top
+      in: query
+      description: Number of records to return. Defaults to 1000 when omitted; maximum of 10000 per call.
+      schema:
+        type: integer
+        default: 1000
+        maximum: 10000
+        minimum: 1
+  responses:
+    BadFilter:
+      description: Malformed OData query string (commonly a $filter with incorrect quoting, spacing, or an unknown field name).
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
   schemas:
-    OpenFemaEnvelope:
-      type: object
-      description: Every OpenFEMA response wraps the requested dataset array in a metadata object (unless $metadata=false is passed).
-      properties:
-        metadata:
-          type: object
-          properties:
-            skip:
-              type: integer
-            filter:
-              type: string
-            orderby:
-              type: string
-            select:
-              type: string
-            rundate:
-              type: string
-              format: date-time
-            count:
-              type: integer
-              description: Total matching records, present only when $count=true.
-            entityname:
-              type: string
-            version:
-              type: integer
-            url:
-              type: string
     FemaWebDisasterSummary:
       type: object
       description: One per-disaster raw financial summary sourced from NEMIS.
@@ -184,13 +167,30 @@ components:
         lastRefresh:
           type: string
           format: date-time
-  responses:
-    BadFilter:
-      description: Malformed OData query string (commonly a $filter with incorrect quoting, spacing, or an unknown field name).
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              error:
-                type: string
+    OpenFemaEnvelope:
+      type: object
+      description: Every OpenFEMA response wraps the requested dataset array in a metadata object (unless $metadata=false is passed).
+      properties:
+        metadata:
+          type: object
+          properties:
+            skip:
+              type: integer
+            filter:
+              type: string
+            orderby:
+              type: string
+            select:
+              type: string
+            rundate:
+              type: string
+              format: date-time
+            count:
+              type: integer
+              description: Total matching records, present only when $count=true.
+            entityname:
+              type: string
+            version:
+              type: integer
+            url:
+              type: string
