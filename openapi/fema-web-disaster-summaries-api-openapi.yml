@@ -56,29 +56,19 @@ paths:
           $ref: '#/components/responses/BadFilter'
 components:
   parameters:
-    OrderBy:
-      name: $orderby
+    Top:
+      name: $top
       in: query
-      description: Field name to sort results by.
+      description: Number of records to return. Defaults to 1000 when omitted; maximum of 10000 per call.
       schema:
-        type: string
-    Filter:
-      name: $filter
-      in: query
-      description: OData-style filter expression, e.g. state eq 'FL' and fyDeclared eq 2024. The parser is strict about spacing, quoting, and capitalization; string literals must be single-quoted.
-      schema:
-        type: string
+        type: integer
+        default: 1000
+        maximum: 10000
+        minimum: 1
     AllRecords:
       name: $allrecords
       in: query
       description: BETA. When true, forces the full result set to be returned in one download, overriding the 10000-record $top ceiling. Intended for bulk export, not interactive paging.
-      schema:
-        type: boolean
-        default: false
-    Count:
-      name: $count
-      in: query
-      description: When true, includes the total matching record count in the metadata envelope. Replacement for the deprecated $inlinecount parameter.
       schema:
         type: boolean
         default: false
@@ -95,6 +85,18 @@ components:
         - jsona
         - xlsx
         default: json
+    Select:
+      name: $select
+      in: query
+      description: Comma-separated list of fields to include in the response.
+      schema:
+        type: string
+    OrderBy:
+      name: $orderby
+      in: query
+      description: Field name to sort results by.
+      schema:
+        type: string
     Skip:
       name: $skip
       in: query
@@ -103,19 +105,10 @@ components:
         type: integer
         default: 0
         minimum: 0
-    Top:
-      name: $top
+    Filter:
+      name: $filter
       in: query
-      description: Number of records to return. Defaults to 1000 when omitted; maximum of 10000 per call.
-      schema:
-        type: integer
-        default: 1000
-        maximum: 10000
-        minimum: 1
-    Select:
-      name: $select
-      in: query
-      description: Comma-separated list of fields to include in the response.
+      description: OData-style filter expression, e.g. state eq 'FL' and fyDeclared eq 2024. The parser is strict about spacing, quoting, and capitalization; string literals must be single-quoted.
       schema:
         type: string
     Metadata:
@@ -125,6 +118,13 @@ components:
       schema:
         type: boolean
         default: true
+    Count:
+      name: $count
+      in: query
+      description: When true, includes the total matching record count in the metadata envelope. Replacement for the deprecated $inlinecount parameter.
+      schema:
+        type: boolean
+        default: false
   schemas:
     OpenFemaEnvelope:
       type: object

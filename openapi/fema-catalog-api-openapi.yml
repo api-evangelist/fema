@@ -81,45 +81,63 @@ paths:
         '400':
           $ref: '#/components/responses/BadFilter'
 components:
+  parameters:
+    Top:
+      name: $top
+      in: query
+      description: Number of records to return. Defaults to 1000 when omitted; maximum of 10000 per call.
+      schema:
+        type: integer
+        default: 1000
+        maximum: 10000
+        minimum: 1
+    Format:
+      name: $format
+      in: query
+      description: Response format. Defaults to json when omitted.
+      schema:
+        type: string
+        enum:
+        - json
+        - csv
+        - parquet
+        - jsona
+        - xlsx
+        default: json
+    Select:
+      name: $select
+      in: query
+      description: Comma-separated list of fields to include in the response.
+      schema:
+        type: string
+    OrderBy:
+      name: $orderby
+      in: query
+      description: Field name to sort results by.
+      schema:
+        type: string
+    Skip:
+      name: $skip
+      in: query
+      description: Number of records to skip, used to page through results beyond $top.
+      schema:
+        type: integer
+        default: 0
+        minimum: 0
+    Filter:
+      name: $filter
+      in: query
+      description: OData-style filter expression, e.g. state eq 'FL' and fyDeclared eq 2024. The parser is strict about spacing, quoting, and capitalization; string literals must be single-quoted.
+      schema:
+        type: string
+    Metadata:
+      name: $metadata
+      in: query
+      description: When false, suppresses the metadata envelope object and returns only the data array. Accepts true/false (the legacy on/off values are deprecated).
+      schema:
+        type: boolean
+        default: true
   schemas:
-    OpenFemaDataSet:
-      type: object
-      description: One catalog entry describing a dataset and version.
-      properties:
-        name:
-          type: string
-        title:
-          type: string
-        version:
-          type: integer
-        description:
-          type: string
-        webService:
-          type: string
-          description: API endpoint path, when the dataset is exposed via the API.
-        lastDataSetRefresh:
-          type: string
-          format: date-time
-        recordCount:
-          type: integer
-        dataDictionary:
-          type: string
-    OpenFemaDataSetField:
-      type: object
-      description: One data-dictionary field entry for a dataset/version.
-      properties:
-        openFemaDataSet:
-          type: string
-        datasetVersion:
-          type: integer
-        name:
-          type: string
-        title:
-          type: string
-        type:
-          type: string
-        description:
-          type: string
     OpenFemaEnvelope:
       type: object
       description: Every OpenFEMA response wraps the requested dataset array in a metadata object (unless $metadata=false is passed).
@@ -147,62 +165,44 @@ components:
               type: integer
             url:
               type: string
-  parameters:
-    OrderBy:
-      name: $orderby
-      in: query
-      description: Field name to sort results by.
-      schema:
-        type: string
-    Filter:
-      name: $filter
-      in: query
-      description: OData-style filter expression, e.g. state eq 'FL' and fyDeclared eq 2024. The parser is strict about spacing, quoting, and capitalization; string literals must be single-quoted.
-      schema:
-        type: string
-    Format:
-      name: $format
-      in: query
-      description: Response format. Defaults to json when omitted.
-      schema:
-        type: string
-        enum:
-        - json
-        - csv
-        - parquet
-        - jsona
-        - xlsx
-        default: json
-    Skip:
-      name: $skip
-      in: query
-      description: Number of records to skip, used to page through results beyond $top.
-      schema:
-        type: integer
-        default: 0
-        minimum: 0
-    Top:
-      name: $top
-      in: query
-      description: Number of records to return. Defaults to 1000 when omitted; maximum of 10000 per call.
-      schema:
-        type: integer
-        default: 1000
-        maximum: 10000
-        minimum: 1
-    Select:
-      name: $select
-      in: query
-      description: Comma-separated list of fields to include in the response.
-      schema:
-        type: string
-    Metadata:
-      name: $metadata
-      in: query
-      description: When false, suppresses the metadata envelope object and returns only the data array. Accepts true/false (the legacy on/off values are deprecated).
-      schema:
-        type: boolean
-        default: true
+    OpenFemaDataSetField:
+      type: object
+      description: One data-dictionary field entry for a dataset/version.
+      properties:
+        openFemaDataSet:
+          type: string
+        datasetVersion:
+          type: integer
+        name:
+          type: string
+        title:
+          type: string
+        type:
+          type: string
+        description:
+          type: string
+    OpenFemaDataSet:
+      type: object
+      description: One catalog entry describing a dataset and version.
+      properties:
+        name:
+          type: string
+        title:
+          type: string
+        version:
+          type: integer
+        description:
+          type: string
+        webService:
+          type: string
+          description: API endpoint path, when the dataset is exposed via the API.
+        lastDataSetRefresh:
+          type: string
+          format: date-time
+        recordCount:
+          type: integer
+        dataDictionary:
+          type: string
   responses:
     BadFilter:
       description: Malformed OData query string (commonly a $filter with incorrect quoting, spacing, or an unknown field name).
