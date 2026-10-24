@@ -1,32 +1,31 @@
 {
   "provider": "fema",
   "sources": [
-    "_original/fema-openapi.yml"
+    "_original/fema-openapi.json"
   ],
   "outputs": [
-    "fema-catalog-api-openapi.yml",
-    "fema-disaster-declarations-api-openapi.yml",
+    "fema-disaster-information-api-openapi.yml",
+    "fema-emergency-management-preparedness-alerts-api-openapi.yml",
     "fema-hazard-mitigation-api-openapi.yml",
-    "fema-ipaws-api-openapi.yml",
-    "fema-nfip-api-openapi.yml",
-    "fema-public-assistance-api-openapi.yml",
-    "fema-web-disaster-summaries-api-openapi.yml"
+    "fema-individual-assistance-api-openapi.yml",
+    "fema-miscellaneous-api-openapi.yml",
+    "fema-national-flood-insurance-program-api-openapi.yml",
+    "fema-public-assistance-api-openapi.yml"
   ],
   "archived": [],
   "errors": [],
   "warnings": [],
   "notes": [
     "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
-    "fema-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "apis.yml register: already-registered"
+    "fema-openapi.json: upgraded openapi 3.0.0 -> OpenAPI 3.2.0",
+    "fema-openapi.json: declared missing tag: Disaster Information",
+    "fema-openapi.json: declared missing tag: Emergency Management/Preparedness/Alerts",
+    "fema-openapi.json: declared missing tag: Hazard Mitigation",
+    "fema-openapi.json: declared missing tag: Individual Assistance",
+    "fema-openapi.json: declared missing tag: Miscellaneous",
+    "fema-openapi.json: declared missing tag: National Flood Insurance Program",
+    "fema-openapi.json: declared missing tag: Public Assistance",
+    "apis.yml register: written (+5 apis, 7 total)"
   ],
-  "skipped": [
-    "fema-catalog-api-openapi.yml: previously refined output, superseded by openapi/_original/",
-    "fema-disaster-declarations-api-openapi.yml: previously refined output, superseded by openapi/_original/",
-    "fema-hazard-mitigation-api-openapi.yml: previously refined output, superseded by openapi/_original/",
-    "fema-ipaws-api-openapi.yml: previously refined output, superseded by openapi/_original/",
-    "fema-nfip-api-openapi.yml: previously refined output, superseded by openapi/_original/",
-    "fema-public-assistance-api-openapi.yml: previously refined output, superseded by openapi/_original/",
-    "fema-web-disaster-summaries-api-openapi.yml: previously refined output, superseded by openapi/_original/"
-  ]
+  "skipped": []
 }
