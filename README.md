@@ -1,4 +1,4 @@
-# OpenFEMA (fema)
+# OpenFEMA
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -64,157 +64,116 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-OpenFEMA is FEMA's open data platform, publishing free, public, machine-readable datasets on disaster declarations, public assistance grants, hazard mitigation projects, the National Flood Insurance Program (NFIP), and emergency alerting through a read-only RESTful API. The API uses OData-style query string parameters (`$filter`, `$select`, `$top`, `$skip`, `$orderby`) over individually versioned dataset endpoints, requires no API key or subscription, and returns JSON, CSV, or Parquet.
+OpenFEMA is FEMA's open data platform, publishing free, public, machine-readable datasets on disaster declarations, public assistance grants, hazard mitigation projects, the National Flood Insurance Program (NFIP), and emergency alerting through a read-only RESTful API. The API uses OData-style query string parameters ($filter, $select, $top, $skip, $orderby) over individually versioned dataset endpoints, requires no API key or subscription, and returns JSON, CSV, or Parquet.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/fema/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/fema/refs/heads/main/apis.yml)
+**Areas:** Government · Open Data · Emergency Management · Disaster · FEMA · Public Safety
 
-## No pricing, no plans
+## OpenFEMA on APIs.io
 
-OpenFEMA is free U.S. government open data. There is no API key, no subscription, no usage-based billing, and no tiered plan structure to document - so this repository intentionally has no `plans/` or `finops/` directory. The only constraint on usage is the per-call record limit described in `rate-limits/fema-rate-limits.yml` (1,000 records per call by default, 10,000 maximum via `$top`, with `$skip`/`$count` paging or the beta `$allrecords=true` for full downloads).
+Everything profiled for OpenFEMA is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/fema/](https://apis.io/providers/fema/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (7)
 
-- Government
-- Open Data
-- Emergency Management
-- Disaster
-- FEMA
-- Public Safety
+- [OpenFEMA Catalog API](https://apis.io/apis/fema/fema-catalog-api/) — Self-describing metadata - dataset list and data dictionaries.
+- [OpenFEMA Disaster Declarations API](https://apis.io/apis/fema/fema-disaster-declarations-api/) — Federally declared disasters.
+- [OpenFEMA Hazard Mitigation API](https://apis.io/apis/fema/fema-hazard-mitigation-api/) — Hazard Mitigation Assistance (HMA) grant program data.
+- [OpenFEMA IPAWS API](https://apis.io/apis/fema/fema-ipaws-api/) — Integrated Public Alert and Warning System archived alerts.
+- [OpenFEMA NFIP API](https://apis.io/apis/fema/fema-nfip-api/) — National Flood Insurance Program redacted policy and claims data.
+- [OpenFEMA Public Assistance API](https://apis.io/apis/fema/fema-public-assistance-api/) — FEMA Public Assistance (PA) grant program data.
+- [OpenFEMA Web Disaster Summaries API](https://apis.io/apis/fema/fema-web-disaster-summaries-api/) — Per-disaster financial summary totals from NEMIS.
 
-## Timestamps
+### Published properties
 
-- **Created:** 2026-07-03
-- **Modified:** 2026-07-03
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### Agentic access (1)
 
-### FEMA Disaster Declarations Summaries API
+Which operations an agent can call, which act, and which need a human in the loop.
 
-Summarized dataset of every official FEMA disaster declaration since 1953 - major disaster, emergency, and fire management assistance declarations - by state, county (FIPS), incident type, and declaration date.
+- [Fema Agentic Access](https://apis.io/agentic-access/fema/fema-agentic-access/)
 
-- **Human URL:** [https://www.fema.gov/openfema-data-page/disaster-declarations-summaries-v2](https://www.fema.gov/openfema-data-page/disaster-declarations-summaries-v2)
-- **Base URL:** `https://www.fema.gov/api/open/v2`
+#### Collections (8)
 
-#### Properties
+Postman and Open Collection request collections.
 
-- [Documentation](https://www.fema.gov/about/openfema/api)
-- [API Reference](https://www.fema.gov/openfema-data-page/disaster-declarations-summaries-v2)
-- [OpenAPI](openapi/fema-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/fema.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/fema.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [OpenFEMA API](https://apis.io/collections/fema/open-fema/)
+- [OpenFEMA Catalog API](https://apis.io/collections/fema/open-fema-catalog-api/)
+- [OpenFEMA Catalog Disaster Declarations API](https://apis.io/collections/fema/open-fema-disaster-declarations-api/)
+- [OpenFEMA Catalog Hazard Mitigation API](https://apis.io/collections/fema/open-fema-hazard-mitigation-api/)
+- [OpenFEMA Catalog IPAWS API](https://apis.io/collections/fema/open-fema-ipaws-api/)
+- [OpenFEMA Catalog NFIP API](https://apis.io/collections/fema/open-fema-nfip-api/)
+- [OpenFEMA Catalog Public Assistance API](https://apis.io/collections/fema/open-fema-public-assistance-api/)
+- [OpenFEMA Catalog Web Disaster Summaries API](https://apis.io/collections/fema/open-fema-web-disaster-summaries-api/)
 
-### FEMA Public Assistance Funded Projects Details API
+#### Security (1)
 
-Obligated Public Assistance grant projects (project worksheets) funded under the PA program, including damage category, project amount, and federal share obligated. Joins to the Public Assistance Applicants dataset via `applicantId`.
+Authentication, trust centre, and vulnerability disclosure.
 
-- **Human URL:** [https://www.fema.gov/openfema-data-page/public-assistance-funded-projects-details-v1](https://www.fema.gov/openfema-data-page/public-assistance-funded-projects-details-v1)
-- **Base URL:** `https://www.fema.gov/api/open/v1`
+- [Fema Domain Security](https://apis.io/security/fema/fema-domain-security/)
 
-#### Properties
+#### Rate limits (1)
 
-- [Documentation](https://www.fema.gov/about/openfema/api)
-- [API Reference](https://www.fema.gov/openfema-data-page/public-assistance-funded-projects-details-v1)
-- [OpenAPI](openapi/fema-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/fema.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/fema.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+Published request limits.
 
-### FEMA Hazard Mitigation Assistance Projects API
+- [Fema Rate Limits](https://apis.io/rate-limits/fema/fema-rate-limits/)
 
-Funded projects under FEMA's Hazard Mitigation Assistance programs - Hazard Mitigation Grant Program (HMGP), Flood Mitigation Assistance (FMA), and (historically) Pre-Disaster Mitigation (PDM) - including project type, status, and federal cost share obligated.
+## Where to find this API
 
-- **Human URL:** [https://www.fema.gov/about/openfema/data-sets](https://www.fema.gov/about/openfema/data-sets)
-- **Base URL:** `https://www.fema.gov/api/open/v3`
-
-#### Properties
-
-- [Documentation](https://www.fema.gov/about/openfema/api)
-- [API Reference](https://www.fema.gov/about/openfema/data-sets)
-- [OpenAPI](openapi/fema-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/fema.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/fema.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### FEMA NFIP Redacted Policies API
-
-Policy-level transactions from the National Flood Insurance Program (NFIP) system of record, redacted to protect policyholder personally identifiable information - coverage amounts, premium, construction, and flood zone attributes by community.
-
-- **Human URL:** [https://www.fema.gov/openfema-data-page/fima-nfip-redacted-policies-v2](https://www.fema.gov/openfema-data-page/fima-nfip-redacted-policies-v2)
-- **Base URL:** `https://www.fema.gov/api/open/v2`
-
-#### Properties
-
-- [Documentation](https://www.fema.gov/about/openfema/api)
-- [API Reference](https://www.fema.gov/openfema-data-page/fima-nfip-redacted-policies-v2)
-- [OpenAPI](openapi/fema-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/fema.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/fema.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### FEMA NFIP Redacted Claims API
-
-NFIP claims transactions redacted to protect policyholder PII - date of loss, cause of damage, building/contents payouts, and elevation data by community.
-
-- **Human URL:** [https://www.fema.gov/openfema-data-page/fima-nfip-redacted-claims-v2](https://www.fema.gov/openfema-data-page/fima-nfip-redacted-claims-v2)
-- **Base URL:** `https://www.fema.gov/api/open/v2`
-
-#### Properties
-
-- [Documentation](https://www.fema.gov/about/openfema/api)
-- [API Reference](https://www.fema.gov/openfema-data-page/fima-nfip-redacted-claims-v2)
-- [OpenAPI](openapi/fema-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/fema.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/fema.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### FEMA IPAWS Archived Alerts API
-
-Archive of public alerts issued through the Integrated Public Alert and Warning System (IPAWS) - the federal system that aggregates EAS, Wireless Emergency Alerts, and NOAA Weather Radio - returned as Common Alerting Protocol (CAP) messages. Hierarchical/nested payload, unique among OpenFEMA datasets.
-
-- **Human URL:** [https://www.fema.gov/openfema-data-page/ipaws-archived-alerts-v1](https://www.fema.gov/openfema-data-page/ipaws-archived-alerts-v1)
-- **Base URL:** `https://www.fema.gov/api/open/v1`
-
-#### Properties
-
-- [Documentation](https://www.fema.gov/about/openfema/api)
-- [API Reference](https://www.fema.gov/openfema-data-page/ipaws-archived-alerts-v1)
-- [OpenAPI](openapi/fema-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/fema.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/fema.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### FEMA Web Disaster Summaries API
-
-Per-disaster financial summary totals - approved Individual Assistance applications, Public Assistance obligations, and Hazard Mitigation grant amounts - sourced raw from FEMA's NEMIS system of record.
-
-- **Human URL:** [https://www.fema.gov/openfema-data-page/fema-web-disaster-summaries-v1](https://www.fema.gov/openfema-data-page/fema-web-disaster-summaries-v1)
-- **Base URL:** `https://www.fema.gov/api/open/v1`
-
-#### Properties
-
-- [Documentation](https://www.fema.gov/about/openfema/api)
-- [API Reference](https://www.fema.gov/openfema-data-page/fema-web-disaster-summaries-v1)
-- [OpenAPI](openapi/fema-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/fema.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/fema.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### FEMA OpenFEMA Dataset Catalog API
-
-Self-describing metadata layer for the whole platform - the `OpenFemaDataSets` endpoint lists every dataset and version, and the `OpenFemaDataSetFields` endpoint returns the data dictionary (field name, type, and description) for any dataset/version pair.
-
-- **Human URL:** [https://www.fema.gov/openfema-data-page/openfema-data-sets-v1](https://www.fema.gov/openfema-data-page/openfema-data-sets-v1)
-- **Base URL:** `https://www.fema.gov/api/open/v1`
-
-#### Properties
-
-- [Documentation](https://www.fema.gov/about/openfema/api)
-- [API Reference](https://www.fema.gov/openfema-data-page/openfema-data-sets-v1)
-- [OpenAPI](openapi/fema-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/fema.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/fema.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-## Common Properties
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
 - [Website](https://www.fema.gov/)
 - [Documentation](https://www.fema.gov/about/openfema/api)
-- [Rate Limits](rate-limits/fema-rate-limits.yml)
+- [Blog](https://www.fema.gov/about/news-multimedia/blog)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 21.2** — emerging · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 66.1 |
+| Contract quality | 43.5 |
+| Contract governance | 0.0 |
+| Operational transparency | 7.9 |
+| Developer ergonomics | 19.0 |
+| Access clarity | 0.0 |
+
+**Agent readiness 17.8** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | na |
+| MCP Server | — |
+| Auth Clarity | — |
+| Idempotency | na |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | na |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 5.9** — Government & Public Sector
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/fema/](https://apis.io/providers/fema/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for OpenFEMA: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/fema/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
